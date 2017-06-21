@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+
+<link rel="stylesheet" href="../css/common.css" />
+<script src="../js/jquery-1.8.0.min.js"></script>
+<title>Home</title>
+</head>
+<body class="reg">
+
+<header class="top_header">
+    <a href="" class="set">设置</a>
+    <a href="" class="home">首页</a>
+    用户登录
+</header>
+
+<section class="login">
+    <header>欢迎登录只能养老服务平台</header>
+    <form method="post" action="">
+    <input type="hidden" value="USER" />
+    <label>用户名：</label><input placeholder="请输入用户名" /><br />
+    <label>密码：</label><input placeholder="请输入密码" type="password" /><br />
+        <button type="button">登 录</button>
+    </form>
+</section>
+
+<script>
+$(document).ready(function() {
+	$('button').click(function () {
+		console.log($('.login input:eq(1)').val()+"  "+$('.login input:eq(2)').val()+"  "+'USER');
+		$.ajax({
+			type:'get',
+			url:'http://10.1.11.29:8080/permission/mobileLogin',
+			//url:'http://10.1.11.195:800/1.php',
+			dataType:   'jsonp',
+			jsonp   :   'callback',
+			data: {name: $('.login input:eq(1)').val(), password:$('.login input:eq(2)').val(), userCategory: 'USER'},
+			success: function (data) {
+			alert(data);
+				if (data.code == 0) {
+					document.write('用户名：'+data.data[0].name);
+				}
+			}
+		});
+
+	});
+});
+
+</script>
+
+</body>
+
+</html>
+
+permission/mobileLogin
+String name, String password, UserCategoryEnum userCategory

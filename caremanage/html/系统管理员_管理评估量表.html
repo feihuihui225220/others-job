@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/shequyonghu.css" />
+<link rel="stylesheet" href="css/yonghuguanli.css" />
+<script src="js/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header">
+        <span class="logo">老年服务平台</span>
+        <p>欢迎您，社区工作者<a href="">修改密码</a><a href="">注销</a></p>
+        <ul><!-- 最后一个li 有class=act -->
+            <li class="act"><a href="">用户管理</a></li>
+            <li><a href="">CareManager管理</a></li>
+            <li><a href="">元服务管理</a></li>
+            <li><a href="">专业服务管理</a></li>
+            <li><a href="">关爱服务管理</a></li>
+            <li><a href="">评估量表管理</a></li>
+            <li><a href="">政策管理</a></li>
+            <li><a href="">设备管理</a></li>
+            <li><a href="">知识库管理</a></li>
+            <li class="last"><a href="">分类管理</a></li>
+        </ul>
+    </div>
+    <div class="body">
+        <div class="box_padding">
+            <div class="admin_cate_opt">
+                <button class="btn">添 加</button>
+            </div>
+
+            <table class="tb table_col4">
+                <col class="col1"/><col class="col2"/><col class="col3"/><col class="col4"/>
+                <tr>
+                    <th>名称</th>
+                    <th>简介</th>
+                    <th>类型</th>
+                    <th>操作</th>
+                </tr>
+                <tr>
+                    <td>某某服务团队</td>
+                    <td>周彦鑫</td>
+                    <td>分数类</td>
+                    <td><span class="tb_edit">编 辑</span><span class="tb_remove">删 除</span><span class="tb_btn">试 题</span><span class="tb_btn">结 论</span><span class="tb_btn">发 布</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="footer"></div>
+</div>
+<div class="limitbox pad10 hide">
+    <ul class="inpubox clearfix">
+        <li><label>名称：</label><input class="text150" type="text" /></li>
+        <li><label>类型：</label>
+            <select>
+                <option>分数类</option>
+                <option>组合类</option>
+            </select>
+        </li>
+        <li><label>简介：</label><textarea name="" id="" cols="30" rows="6"></textarea></li>
+    </ul>
+</div>
+<script type="text/javascript" src="js/layer.min.js"></script>
+<script type="text/javascript">
+$(function(){
+
+    $('.btn').click(function () {
+        $('.limitbox input').val('');
+        $('.limitbox textarea').val('');
+        $.layer({
+            type : 1,
+            title : '添加分类',
+            offset:['150px' , ''],
+            border : false,
+            shadeClose:true,
+            fadeIn: 300,
+            btns: 2,
+            btn: ['保存', '取消'],
+            yes:function(index){
+                console.log("保存",index);
+                $('.table_col4').append('<tr><td>'+$('.limitbox input:eq(0)').val()+'</td><td>'+$('.limitbox textarea').val()+'</td><td>'+$('.limitbox select').val()+'</td><td><span class="tb_edit">编 辑</span><span class="tb_remove">删 除</span><span class="tb_btn">试 题</span><span class="tb_btn">结 论</span><span class="tb_btn">发 布</span></td></tr>')
+                layer.close(index);
+            },
+            area : ['400px','320px'],
+            page : {dom : '.limitbox'}
+        });
+    });
+
+    $('.tb_edit').live('click', function () {
+        var _this = $(this)
+        $('.limitbox select').val($(this).parent().prev().html());
+        $('.limitbox input:eq(0)').val($(this).parent().prev().prev().prev().html());
+        $('.limitbox textarea').val($(this).parent().prev().prev().html());
+        $.layer({
+            type : 1,
+            title : '编辑',
+            offset:['150px' , ''],
+            border : false,
+            shadeClose:true,
+            fadeIn: 300,
+            btns: 2,
+            btn: ['保存', '取消'],
+            yes:function(index){
+                console.log("保存",index);
+                $(_this).parent().prev().html($('.limitbox select').val()).prev().html($('.limitbox textarea').val()).prev().html($('.limitbox input').val());
+                layer.close(index);
+            },
+            area : ['400px','320px'],
+            page : {dom : '.limitbox'}
+        });
+    });
+
+    $('.tb_remove').live('click', function () {
+        var _this = $(this)
+        $.layer({
+            shade: [0],
+            area: ['auto','auto'],
+            dialog: {
+                msg: '确定要删除吗？',
+                btns: 2,                    
+                type: 4,
+                btn: ['删除','取消'],
+                yes: function(){
+                    $(_this).parent().parent().remove();
+                    layer.msg('删除', 1, 1);
+                }, no: function(){
+                    //layer.msg('取消', 1, 13);
+                }
+            }
+        });
+    });
+
+});
+</script>
+</body>
+</html>

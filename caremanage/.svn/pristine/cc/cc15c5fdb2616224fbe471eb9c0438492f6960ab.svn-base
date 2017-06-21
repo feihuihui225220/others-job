@@ -1,0 +1,29 @@
+.modifyMain{width:810px;height:920px;margin:10px auto;padding:32px 140px 48px 87px;border:1px solid #e0e0e0;}
+.modifyMain .content{width:560px;min-height:60px;}
+.modifyMain .content .content_left{width:80px;height:30px;line-height:30px;font-size:16px;color:#232323;margin-right:32px;}
+.modifyMain .content .content_right{width:440px;}
+.courseName{width:135px;height:30px;border:1px solid #d2d2d2;}
+.modifyVideo{color:#48c1fa;font-size:14px;margin-left:46px;}
+.confirmImpress{display:inline-block;width:70px;height:30px;line-height:30px;background:url(../images/btnShort.png);color:#fff;font-size:16px;text-align:center;margin-left:46px;}
+.labelImpress{margin:10px auto;}
+.impress{width:135px;height:30px;border:1px solid #d2d2d2;}
+.labelImpress a{display:inline-block;width:66px;height:23px;line-height:23px;color:#ea8f00;border:1px solid #ea8f00 ;border-radius:5px;margin-right:20px;text-align:center;}
+.labelImpress a:hover{color:#fff;background-color:#ea8f00;}
+.courseTime input{margin-right:10px;margin-top:10px;}
+.courseTime label{margin-right:20px;margin-top:10px;}
+
+.detail{width:135px;height:30px;border:1px solid #d2d2d2;}
+.confirmDetail{display:inline-block;width:70px;height:30px;line-height:30px;background:url(../images/btnShort.png);color:#fff;font-size:16px;text-align:center;margin-left:46px;}
+.contentmax{height:100px;margin-bottom:30px;}
+.modifyMain .contentmax .content_left{width:80px;height:30px;line-height:30px;font-size:16px;color:#232323;margin-right:32px;}
+.modifyMain .contentmax .content_right{width:440px;}
+
+.wuliao{height:280px;}
+.modifyMain .wuliao .content_left{width:80px;height:30px;line-height:30px;font-size:16px;color:#232323;margin-right:32px;}
+.modifyMain .wuliao .content_right{width:440px;}
+table{margin-top:10px;}
+
+.bottom_comfirm{width:470px;text-align:center;margin-top:25px;}
+.bottom_comfirm a{display:inline-block;width:70px;height:30px;line-height:30px;color:#fff;font-size:16px;text-align:center;margin-right:50px;}
+.bottom_comfirm .save{background:url(../images/btnShort.png);}
+.bottom_comfirm .cancel{background:url(../images/cancel.png);}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="caremanager"
+  id="myeclipse.1439861059610"
+  context-root="/"
+  j2ee-spec="6.0"
+  archive="caremanager.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+

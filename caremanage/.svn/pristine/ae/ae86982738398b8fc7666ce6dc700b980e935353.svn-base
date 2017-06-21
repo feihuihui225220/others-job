@@ -1,0 +1,7 @@
+.searchbox{padding-left: 20px;padding-top: 20px}
+.searchbox lable{margin-right: 20px; }
+.add_div{position: relative;left:17.2%;padding: 15px; }
+.add_div lable{ margin-right: 10px; } 
+._img{position: relative; left: 100px;top:-20px;}
+.img_hiden{border: 1px solid black; width: auto;height: 250px;position: absolute;padding: 6px;}
+.materials_img{ width: 190px;height: 230px;}

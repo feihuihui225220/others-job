@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>老年人前端_分数题</title>
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/shequyonghu.css" />
+<link rel="stylesheet" href="css/yonghuguanli.css" />
+<script src="js/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header">
+        <span class="logo">老年服务平台</span>
+        <p>欢迎您，社区工作者<a href="">修改密码</a><a href="">注销</a></p>
+        <ul><!-- 最后一个li 有class=act -->
+            <li><a href="">我的信息</a></li>
+            <li><a href="">我的服务</a></li>
+            <li><a href="">我的计划</a></li>
+            <li><a href="">实时消息</a></li>
+            <li><a href="">警报信息</a></li>
+			<li class="act"><a href="">公告政策</a></li>
+			<li><a href="">我的订单</a></li>
+            <li class="last"><a href="">知识库</a></li>
+        </ul>
+    </div>
+    <div class="body">
+        <div class="useractbox bodyline pad10">
+            <div class="strong usertitle pad10">试题</div>
+        <div class="ql">
+        </div>
+        <form name="form1" method="post" action="">
+            <div class="admin_cate_opt">
+                <button class="btn aa" type="button">提 交</button>
+            </div>
+            <div class="bodyline pad10">
+                <p class="strong usertitle pad10">
+                    结论
+                </p>
+                <p class="sum bb">
+                    分数：<b>0</b>分
+                </p>
+                <p class="sum">
+                    分集名称：<span>轻度受损</span>
+                </p>
+                <input type="hidden" name="id" value="" id="aid" />
+                <input type="hidden" name="con" value="" id="acon" />
+                <p class="opt pad10 admin_cate_opt">
+                    <button type="submit" class="btn" disabled="disabled" style="color:#999">完 成</button>
+                </p>
+            </div>
+        </form>
+        </div>
+        
+    </div>
+    <div class="footer"></div>
+</div>
+<script>
+
+$.ajax({
+    //url:        '/professional/assess/recordInfo?assessId='+location.href.match(/\d+/g)[location.href.match(/\d+/g).length-1],
+    url:        'http://10.1.11.92:8080/professional/assess/recordInfo?assessId=43',
+    dataType:   'jsonp',
+    jsonp:      'callback',
+    success:    function (json) {
+        $('.ql').html('');
+        if (json.code == 0) {
+            if (json.data[0].type == 0) {
+
+                //console.log(json.data[0].qaList.length)
+                var arr = [];
+                for (var i=0; i<json.data[0].qaList.length; i++) {
+                    (function (index) {
+                        var str = '';
+                        for (var j=0; j<json.data[0].qaList[index].answers.length; j++) {
+                            str += '<label class="i_height"><input type="radio" name=a'+json.data[0].qaList[index].id+' data-value="'+json.data[0].qaList[index].answers[j].score+'"> '+json.data[0].qaList[index].answers[j].code+' '+json.data[0].qaList[index].answers[j].content+'</label><br>'
+                        }
+                        $('.ql').append(
+                            '<div class="i_result_list">'+
+                            '<p class="strong mgb10">'+json.data[0].qaList[index].content+'</p>'+str+
+                            '</div>'
+                        )
+                        arr.push({lowerLimit: json.data[0].cluList[index].lowerLimit, upperLimit: json.data[0].cluList[index].upperLimit, content: json.data[0].cluList[index].content, id: json.data[0].cluList[index].id});
+                        console.log(arr);
+                    })(i);
+                }
+
+                $('.aa').click(function () {
+                    var num = 0;
+                    $('input[type=radio]').each(function () {
+                        if($(this).prop('checked')) {
+                            num+=parseInt($(this).attr('data-value'));
+                        }
+                    });
+                    $('.bb b').html(num);
+
+                    for (var i=0; i<arr.length; i++) {
+                        if (num>=arr[i].lowerLimit && num<=arr[i].upperLimit) {
+                            $('.sum span').html(arr[i].content);
+                            $('#aid').val(arr[i].id);
+                            $('#acon').val(arr[i].content);
+                        }
+                    }
+
+                    $('.admin_cate_opt .btn').removeAttr('disabled').css('color', '#000');
+
+                });
+
+
+            }
+        }
+    }
+});
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+.main1{width:96%;margin:0 2%;height:600px;background:#f4f9f8;}
+.personTitle{padding-bottom:15px;border-bottom:1px solid #d0d0d0;}
+.personTitle_left{width:50%;}
+.personTitle_right{width:50%;}
+.personTitle_left ul{margin-left:3%;}
+.personTitle_left ul li{height:38px;line-height:38px;}
+.marginright10{margin-right:10px;}
+.marginright50{margin-right:50px;}
+.marginright60{margin-right:60px;}
+.marginleft90{margin-left:90px;}
+.marginleft50{margin-left:50px;}
+.personTitle_right ul{padding-right:40px;}
+.personTitle_right ul li{float:left;width:91px;margin-left:40px;}
+.personTitle_right ul li span{display:inline-block;width:91px;text-align:center;}
+/*左侧导航*/
+.personInfo{padding:10px;}
+.personInfo_right{width:80%;margin-left:20px;padding:30px 10px;}
+.personInfo_right input{margin-left:10px;}
+.personInfo_right label{color:#555555;}
+.personInfo .sidebar{width:160px;border:1px solid #ebf0ef;}
+.personInfo .sidebar li a{display:inline-block;width:160px;height:48px;line-height:48px;background-color:#fff;text-align:center;border-bottom:1px solid #dfdfdf;}
+.personInfo_righttop{border-bottom:1px solid #d0d0d0;line-height:25px;height:25px;padding-bottom:20px;position:relative;}
+.personInfo_righttop label{display:inline-block;color:#22cde7;font-size:20px;line-height:25px;height:25px;}
+.marginleft15{margin-left:15px;}
+.marginleft75{margin-left:75px;}
+.personInfo_righttop .saves{position:absolute;right:0;top:-15px;display:inline-block;width:51px;height:52px;background:url(../image/save.png) no-repeat center center;}
+.personInfo_rightbottom .detail{padding:10px 0;border-bottom:1px solid #d0d0d0;}
+.personInfo_rightbottom .detail li{line-height:30px;margin-bottom:10px;}
+.input1{width:80px;height:30px;border:1px solid #b7b7b7;border-radius:5px;margin-right:30px;}
+.input2{width:162px;height:30px;border:1px solid #b7b7b7;border-radius:5px;margin-right:30px;}
+.emergency{padding:15px 0;border-bottom:1px solid #d0d0d0;position:relative;}
+.emergency .contact{font-size:20px;margin-right:25px;}
+.emergency input{margin-bottom:10px;}
+/*.emergency p{width:830px;}*/
+.emergency p{width:413px;}
+.emergency .increase{position:absolute;right:0;top:30%;display:inline-block;width:29px;height:28px;background:url(../image/increase.png)no-repeat center center;}
+.medical,.fixedmed,.marriage,.family,.degree,.smoke,.drink,.irritability,.hard,.medhisory{line-height:35px;padding:5px 0;}
+.profession .job{display:inline-block;width:135px;line-height:35px;padding:5px 0;float:left;}
+.profession,.dietary {padding:10px 0;}
+.profession input{margin-bottom:10px;}
+.dietary input{margin-bottom:10px;}
+.dietary .habit{display:inline-block;width:135px;line-height:35px;padding:5px 0;float:left;}
+.leftInfo{display:inline-block;width:135px;}
+.input3{width:485px;height:30px;border:1px solid #b7b7b7;border-radius:5px;margin-right:30px;}
+.input4{width:35px;height:30px;border:1px solid #b7b7b7;border-radius:5px;margin:0 10px;}
+.border-bottom{border-bottom:1px solid #d0d0d0;}
+#illiteracy{margin-left:5px;}
+#qinmeisu{margin-left:5px;}
+#bashi{margin-left:5px;}
+.medhis{padding:10px;width:590px;height:88px;border:1px solid #b7b7b7;font-size:16px;color:#818181;}
+
+.addUser_input_{width:420;}

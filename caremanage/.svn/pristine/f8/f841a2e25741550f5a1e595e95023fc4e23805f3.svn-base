@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>社区用户_用户管理</title>
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/shequyonghu.css" />
+<script src="js/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header">
+        <span class="logo">老年服务平台</span>
+        <p>欢迎您，社区工作者<a href="">修改密码</a><a href="">注销</a></p>
+        <ul><!-- 最后一个li 有class=act -->
+            <li class="act"><a href="">用户管理</a></li>
+            <li><a href="">CareManager管理</a></li>
+            <li><a href="">元服务管理</a></li>
+            <li><a href="">专业服务管理</a></li>
+            <li><a href="">关爱服务管理</a></li>
+            <li><a href="">评估量表管理</a></li>
+            <li><a href="">政策管理</a></li>
+            <li><a href="">设备管理</a></li>
+            <li><a href="">知识库管理</a></li>
+            <li class="last"><a href="">分类管理</a></li>
+        </ul>
+    </div>
+    <div class="body bodyline pad10">
+        <div class="usertitle mgb10 strong clearfix"><div class="f_r fr_itbn"><button class="pad5 adduser">添加用户</button></div>用户管理</div>
+        <div class="tablebox">
+            <table class="table100 policy usertable cen">
+                <tr><th>姓名</th><th>登录密码</th><th>联系电话</th><th>角色</th><th>操作</th></tr>
+                <tr class="userid_1"><td>张三</td><td>123456</td><td>18933334444</td><td>超级管理员</td><td class="operate"><input class="edituser" type="button" userid="1" value="编辑" /><input class="deluser mgl5" userid="1" type="button" value="删除"></td></tr>
+                <tr class="userid_2"><td>张三</td><td>123456</td><td>18933334444</td><td>2</td><td class="operate"><input  class="edituser" type="button" userid="2" value="编辑" /><input class="deluser mgl5" type="button" userid="2" value="删除"></td></tr>
+                <tr class="userid_3"><td>张三</td><td>123456</td><td>18933334444</td><td>2</td><td class="operate"><input  class="edituser" type="button" userid="3" value="编辑" /><input class="deluser mgl5" type="button" userid="3" value="删除"></td></tr>
+            </table>
+        </div>
+    </div>
+    <div class="footer"></div>
+</div>
+<div class="userbox pad10 hide">
+    <ul class="inpubox clearfix">
+        <li><label>姓名：</label><input class="text150" type="text" /></li>
+        <li><label>登录密码：</label><input class="text150" type="text" /></li>
+        <li><label>联系电话：</label><input class="text150 timedate" type="text" /></li>
+        <li><label>选择角色：</label><select class="select160" name="" id=""><option value="0">全部</option><option value="0">全部</option></select></li>
+    </ul>
+</div>
+<script type="text/javascript" src="js/layer.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $(".adduser").click(function(){
+        $.layer({
+            type : 1,
+            title : '添加用户',
+            offset:['150px' , ''],
+            border : false,
+            shadeClose:true,
+            fadeIn: 300,
+            btns: 2,
+            btn: ['保存', '取消'],
+            yes:function(index){
+                console.log("保存",index);
+                layer.close(index);
+            },
+            area : ['400px','300px'],
+            page : {dom : '.userbox'}
+        });
+    });
+    $(".edituser").click(function(){
+        var userid = $(this).attr("userid");
+        console.log('编辑id'+userid);
+        $.layer({
+            type : 1,
+            title : '编辑用户',
+            offset:['150px' , ''],
+            border : false,
+            shadeClose:true,
+            fadeIn: 300,
+            btns: 2,
+            btn: ['保存', '取消'],
+            yes:function(index){
+                console.log("保存",index);
+                layer.close(index);
+            },
+            area : ['400px','300px'],
+            page : {dom : '.userbox'}
+        });
+    });
+    $(".deluser").click(function(){
+        var userid = $(this).attr("userid");
+        layer.confirm('是否确定删除该用户?', function(index){
+            $('.userid_'+userid).remove();
+            layer.close(index);
+        }, function(index){
+            console.log(index);
+        });
+    });
+});
+</script>
+</body>
+</html>

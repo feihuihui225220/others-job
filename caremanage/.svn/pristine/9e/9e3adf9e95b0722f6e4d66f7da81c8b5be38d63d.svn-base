@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+
+<link rel="stylesheet" href="../css/common.css" />
+<title>Home</title>
+</head>
+<body class="reg">
+
+<header class="top_header">
+    <a href="" class="set">设置</a>
+    <a href="" class="home">首页</a>
+    用户登录
+</header>
+
+<section class="login">
+    <header>欢迎登录只能养老服务平台</header>
+    <form method="post" action="">
+    <label>用户名：</label><input placeholder="请输入用户名" /><br />
+    <label>密码：</label><input placeholder="请输入密码" type="password" /><br />
+    <label>确认密码：</label><input placeholder="请输入密码" type="password" /><br />
+        <button type="submit">注 册</button>
+    </form>
+</section>
+
+</body>
+</html>

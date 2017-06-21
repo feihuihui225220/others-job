@@ -1,0 +1,21 @@
+body{
+    margin: 0;
+    padding:0;
+}
+.gou{
+    background: url("/assets/css/img/1111.png");
+    background-size: 100%;
+    width: 30vw;
+    height:30vw;
+    margin:20% auto 0px auto;
+}
+.t_font{
+      text-align: center;
+    height: 100px;
+    font-size:60px;
+  }
+.t_font>a{
+    color: #009688;
+    line-height: 100px;
+    cursor: pointer;
+}

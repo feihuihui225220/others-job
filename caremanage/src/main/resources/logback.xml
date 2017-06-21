@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder charset="UTF-8"> 
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger -- %msg -- %n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<!-- 输出到控制台和文件，可定义更多的 Appender -->
+	<root level="DEBUG">
+		<appender-ref ref="stdout" />
+	</root>
+
+	<!-- 下面配置一些第三方包的日志过滤级别，用于避免刷屏 -->
+	<logger name="org.hibernate" level="ERROR" />
+	<logger name="org.springframework" level="ERROR" />
+	<logger name="com.opensymphony" level="ERROR" />
+	<logger name="org.apache" level="ERROR" />
+	<!-- show parameters for hibernate sql 专为 Hibernate 定制 -->
+	<logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="ERROR" />
+	<logger name="org.hibernate.type.descriptor.sql.BasicExtractor" level="ERROR" />
+	<logger name="org.hibernate.SQL" level="ERROR" />
+	<logger name="org.hibernate.engine.QueryParameters" level="ERROR" />
+	<logger name="org.hibernate.engine.query.HQLQueryPlan" level="ERROR" />
+
+</configuration>

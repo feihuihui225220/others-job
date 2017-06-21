@@ -1,0 +1,20 @@
+.main{width:1365px;margin:0 auto;height:587px;margin-top:7px;}
+.pagespan{float:right;margin-right:150px;}
+.sidebar{width:13%;height:100%;margin:auto 13px auto 13px;border:1px solid #d2d2d2;}
+.sidebar a{display:block;width:100%;height:30px;line-height:30px;text-align:center;font-size:16px;color:#232323;border-top:1px solid #d2d2d2;border-bottom:1px solid #d2d2d2;margin-bottom:10px;background:url(/assets/newImg/taskbg.png) no-repeat 0 center;}
+.sidebar .todaytask{margin-top:33px;background-color:#35b5f1;color:#fff;}
+.content{width:84%;height:100%;border:1px solid #d2d2d2;font-size:14px;}
+.content .wrap{margin:35px 48px auto 40px;}
+.impressLabel{height:60x;line-height:60px;border-bottom:2px dashed #c7c7c7;}
+.impressLabel span{font-size:16px;}
+.impressLabel .label1,.label2{display:inline-block;width:68px;height:23px;line-height:23px;color:#fff;margin-left:35px;background-color:#f2bc66;border:1px solid #ea8f00;border-radius:5px;text-align:center;}
+.courseTime{margin-left:32px;}
+.addCourse{height:60x;line-height:60px;border-bottom:2px dashed #c7c7c7;}
+.addCourse span{font-size:16px;}
+.addCourse a{display:inline-block;width:70px;height:30px;line-height:30px;background:url(/assets/newImg/btnShort.png);color:#fff;font-size:16px;text-align:center;margin-top:20px;margin-right:8px;}
+.courseList{width:135px;height:32px;border:1px solid #d2d2d2;border-radius:5px;margin-left:32px;}
+.otherLabel{width:208px;height:30px;border:1px solid #d2d2d2;border-radius:5px;margin-left:32px;}
+table{width:690px;margin-top:10px;}
+
+.saveConfirm{width:690px; text-align:center;margin-top:40px;}
+.saveConfirm a{display:inline-block;width:70px;height:30px;line-height:30px;text-align:center;font-size:16px;color:#fff;background:url(/assets/newImg/btnShort.png);margin-right:50px;}

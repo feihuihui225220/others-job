@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>社区用户_汇总</title>
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/shequyonghu.css" />
+<script src="js/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header">
+        <span class="logo">老年服务平台</span>
+        <p>欢迎您，社区工作者<a href="">修改密码</a><a href="">注销</a></p>
+        <ul><!-- 最后一个li 有class=act -->
+            <li class="act"><a href="">客户管理</a></li>
+            <li><a href="">警报管理</a></li>
+            <li><a href="">责任管理</a></li>
+            <li><a href="">用户管理</a></li>
+            <li><a href="">角色管理</a></li>
+            <li class="last"><a href="">权限管理</a></li>
+        </ul>
+    </div>
+    <div class="body bodyline pad10">
+        <div class="searchli">
+            <ul class="inpubox clearfix">
+                <li><label>姓名：</label><input class="text150" type="text" /></li>
+                <li><label>身份证号：</label><input class="text150" type="text" /></li>
+				<li><label>分配状态：</label><select class="select160" name="" id=""><option value="0">全部</option><option value="1">已分配</option><option value="2">新用户</option></select></li>
+                <li><input class="pad5 ibtn" type="button" value="搜索"></li>
+            </ul>
+        </div>
+        <div class="tablebox">
+            <table class="table100 usertable cen">
+                <tr><th>姓名</th><th>身份证号</th><th>性别</th><th>年龄</th><th>联系电话</th><th>所属社区</th><th>分配状态</th></tr>
+                <tr input class="pad5 ibtn addadver"><td>张三</td><td>110110110110110110</td><td>男</td><td>67</td><td>13800138000</td><td>北汽社区</td><td>新用户</td></tr>
+            </table>
+        </div>
+    </div>
+    <div class="footer"></div>
+</div>
+
+<div class="importbox pad10 hide">
+    <div class="selectbox clearfix">
+        <div class="left f_l">
+            <select class="selectmultiple" name="" id="select_left" multiple="multiple" size="1">
+                <option value="1">11字段</option>
+                <option value="1">12字段</option>
+                <option value="1">13字段</option>
+                <option value="1">14字段</option>
+                <option value="1">15字段</option>
+                <option value="1">16字段</option>
+                <option value="1">17字段</option>
+            </select>
+        </div>
+        <div class="mid f_l"><button class="addOption">添加</button><button class="delOption">删除</button></div>
+        <div class="right f_l">
+            <select class="selectmultiple" name="" id="select_right" multiple="multiple" size="1"></select>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/layer.min.js"></script>
+<script type="text/javascript" src="js/lhgcalendar.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $(".addOption").on('click',function(){
+        if($("#select_left option:selected").length>0){
+            $("#select_left option:selected").each(function(){
+                $("#select_right").append("<option value='"+$(this).val()+"'>"+$(this).text()+"</option");
+                $(this).remove();　 
+            });
+        }else{
+            alert("请选择要添加的字段");
+        }
+    });
+    $(".delOption").on('click',function(){
+        if($("#select_right option:selected").length>0){
+            $("#select_right option:selected").each(function(){
+                $("#select_left").append("<option value='"+$(this).val()+"'>"+$(this).text()+"</option");
+                $(this).remove();　 
+            });
+        }else{
+            alert("请选择要删除的字段");
+        }
+    });
+    //设置选中
+    function checkSelectAll(){
+        var oAll = $(".checkbox") //全部可选
+        ,
+        bAllChecked = true //是否是全选状态默认true为全选,false为未选中
+        ,
+        iLen = oAll.length,addOnNums = 0;
+        if (iLen == 0) bAllChecked = false;
+        for (var _i = 0; _i < iLen; _i++) {
+            if (!$(oAll[_i]).attr("checked")) {
+                bAllChecked = false; 
+            }else{
+                ++addOnNums;
+            }
+        }
+        if (bAllChecked) { //是否全选样式
+            $(".checkall").attr("checked",true);
+        } else {
+            $(".checkall").attr("checked",false);
+        }
+    }
+    $(".checkbox").on("click",function(){
+        checkSelectAll();
+    });
+    $(".checkall").on("click",function(){
+        if(!!$(this).attr('checked')){
+            $(".checkbox").attr("checked",true);
+        }else{
+            $(".checkbox").attr("checked",false);
+        }
+    });
+    $(".timedate").calendar({ format:'yyyy-MM-dd' });
+});
+</script>
+</body>
+</html>

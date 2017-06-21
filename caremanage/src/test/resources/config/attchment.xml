@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<attchment>
+	
+	<!-- 政策管理上传附件 -->
+	<att id="0" name="policy" uri="/c/policy/{communityId}/" />
+	
+	<!-- 公告管理上传附件 -->
+	<att id="1" name="notice" uri="/c/notice/{communityId}/" />
+	
+	<!-- 专业服务上传附件 -->
+	<att id="2" name="professional.cover" uri="/p/cover/" />
+	
+	<!--  -->
+	<att id="3" name="professional.vendor.cover" uri="/p/cover/vendor/" />
+	
+	<!-- 关爱分类上传附件 -->
+	<att id="4" name="care.category.cover" uri="/l/cover/cat/" />
+	
+	<!-- 关爱服务上传附件 -->
+	<att id="5" name="care.cover" uri="/l/cover/" />
+	
+	<!-- 关爱服务商上传附件 -->
+	<att id="6" name="care.vendor.cover" uri="/l/cover/vendor/" />
+	
+	<!-- 老年人头像上传 -->
+	<att id="7" name="aged.head" uri="/a/head/{communityId}/" />
+	
+	<!-- 老年人证据信息上传 -->
+	<att id="8" name="aged.evidence" uri="/a/evidence/{communityId}/" />
+	
+</attchment>

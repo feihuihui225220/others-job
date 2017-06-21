@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta-services>
+	<meta-service>
+		<id>m_Intelligent_mattress</id>
+		<beanName>intelligentMattressService</beanName>
+		<class>com.anticw.aged.service.professional.data.base.IntelligentMattressService</class>
+	</meta-service>
+	<meta-service>
+		<id>m_pressure</id>
+		<beanName>pressureService</beanName>
+		<class>com.anticw.aged.service.professional.data.base.PressureService</class>
+	</meta-service>
+	
+	<meta-service>
+		<id>m_heart</id>
+		<beanName>heartService</beanName>
+		<class>com.anticw.aged.service.professional.data.base.HeartService</class>
+	</meta-service>
+	
+	<meta-service>
+		<id>m_oxygen</id>
+		<beanName>oxygenService</beanName>
+		<class>com.anticw.aged.service.professional.data.base.OxygenService</class>
+	</meta-service>
+	
+	<meta-service>
+		<id>m_bloodGlucose</id>
+		<beanName>bloodGlucoseService</beanName>
+		<class>com.anticw.aged.service.professional.data.base.BloodGlucoseService</class>
+	</meta-service>
+	
+	<meta-service>
+		<id>m_weight</id>
+		<beanName>weightService</beanName>
+		<class>com.anticw.aged.service.professional.data.base.WeightService</class>
+	</meta-service>
+	
+	<meta-service>
+		<id>m_ecg</id>
+		<beanName>ecgService</beanName>
+		<class>com.anticw.aged.service.professional.data.base.EcgService</class>
+	</meta-service>
+	
+	<meta-service>
+		<id>m_bedMovement</id>
+		<beanName>bedMovementService</beanName>
+		<class>com.anticw.aged.service.professional.data.base.BedMovementService</class>
+	</meta-service>
+	<meta-service>
+		<id>m_grip</id>
+		<beanName>gripPowerService</beanName>
+		<class>com.anticw.aged.service.professional.data.base.GripPowerService</class>
+	</meta-service>
+	<meta-service>
+		<id>m_flexibility</id>
+		<beanName>flexibilityService</beanName>
+		<class>com.anticw.aged.service.professional.data.base.FlexibilityService</class>
+	</meta-service>
+	<meta-service>
+		<id>m_physical</id>
+		<beanName>physicalService</beanName>
+		<class>com.anticw.aged.service.professional.data.base.PhysicalService</class>
+	</meta-service>
+ 
+ 
+	<meta-service>
+		<id>h_fat</id>
+		<beanName>fatService</beanName>
+		<class>com.anticw.aged.service.professional.data.base.FatService</class>
+	</meta-service>
+	<meta-service>
+		<id>h_electrocardio</id>
+		<beanName>electrocardioService</beanName>
+		<class>com.anticw.aged.service.professional.data.base.ElectrocardioService</class>
+	</meta-service>
+	
+	
+	
+	
+</meta-services>

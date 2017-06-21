@@ -1,0 +1,148 @@
+html{
+    width: 100%;
+    height: 100%;
+}
+body{
+    font: 14px/1.5 '微软雅黑';
+
+}
+select{
+    margin: 0;
+    padding: 0;
+}
+.title{
+    margin-top: 10px;
+    width: 100%;
+}
+.record{
+    margin-left: 250px;
+}
+table {
+    border-bottom: 1px solid #8ed7f8;
+    text-align: center;
+    border-collapse: collapse;
+}
+table tr{
+    margin-bottom: 10px;
+    /*border-bottom: 1px solid #8ed7f8;*/
+}
+table th{
+    background: #48c1fa;
+    font-weight: normal;
+    color: #fff;
+    height: 35px;
+    text-align: center;
+}
+table td{
+    height: 35px;
+    border-top: 1px solid #ddd;
+}
+table tr td{
+    border-left: 1px solid #8ed7f8;
+    border-right: 1px solid #8ed7f8;
+}
+.tr_two{
+    background: #e3f6fe;
+}
+.tr_two:hover{
+    background-color: #41C7DB;
+}
+.tr_first:hover{
+    background-color: #41C7DB;
+}
+.tr_first{
+    background-color: #eee;
+}
+._tale1 ._active{
+
+    width: 100%;
+    margin: 0;
+}
+.inpubox li label{
+    text-align: right;
+    display: inline-block;
+    width: 120px;
+    font-weight: normal;
+}
+.inpubox li{
+    line-height: 14px;
+    list-style: none;
+    display: inline-block;
+    white-space: nowrap;
+
+
+}
+.button_search{
+    font-size: 12px;
+    background-image: url(/assets/newImg/btn.png);
+    width: 75px;
+    height: 25px;
+    border: 0px;
+    color: #EBF8FB;
+    margin-top: 100px;
+    /*float: right;*/
+    margin-right: 10px;
+    margin-left: 15px;
+}
+.button_add{
+    font-size: 12px;
+    background-image: url(/assets/newImg/btn.png);
+    width: 85px;
+    height: 25px;
+    border: 0px;
+    color: #EBF8FB;
+    margin-top: 100px;
+    /*float: right;*/
+    margin-right: 10px;
+    margin-left: 15px;
+}
+.button_next{
+    font-size: 12px;
+    background-image: url(/assets/newImg/btn.png);
+    width: 85px;
+    height: 25px;
+    border: 0px;
+    color: #EBF8FB;
+    margin-left: 60px;
+    /*float: right;*/
+    margin-top: 45px;
+
+}
+.record{
+    position: relative;
+    z-index: 1;
+}
+/*弹出框*/
+#hide{
+    display: none;
+    height: 280px;
+    border: 2px solid #339acd;
+    position: absolute;
+    background-color: #fff;
+    z-index: 2;
+    width: 40%;
+    margin-left: 20%;
+    margin-right: 30%;
+    padding-left: 20px;
+}
+#hide li{
+    list-style: none;
+    margin-top: 25px;
+
+}
+#hide .site{
+    font-weight: normal;
+}
+#hide .select2{
+    width: 120px;
+}
+#hide form{
+   margin-left: 70px;
+    margin-top: 50px;
+}
+#hide .glyphicon-remove{
+    margin-right: 20px;
+    float: right;
+   margin-top: -60px;
+
+}

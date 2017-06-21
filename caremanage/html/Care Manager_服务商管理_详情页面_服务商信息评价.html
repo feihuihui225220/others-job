@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/reg.css" />
+<link rel="stylesheet" href="css/shequyonghu.css" />
+<link rel="stylesheet" href="css/yonghuguanli.css" />
+<script src="js/jquery-1.8.0.min.js"></script>
+<style>
+.inpubox li {width:290px;}
+.mask_contact {padding-top:20px;}
+.mask_contact table {width:72%;margin-left:112px;}
+.mask_contact table a {color:#333;}
+.mask_contact .inpubox li.w520 {width:640px;}
+.mask_contact h4 {margin-bottom:15px;}
+.col2 {width:6em;}
+.fix_car {padding-left:112px;margin-bottom:15px;}
+.fix_car span {display:block;margin-bottom:15px;}
+.fix_car b {color:#678678;font-weight:normal;}
+.fix_car textarea {padding:5px;}
+.fix_car select {margin-bottom:20px;}
+</style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="header">
+        <span class="logo">老年服务平台</span>
+        <p>欢迎您，社区工作者<a href="">修改密码</a><a href="">注销</a></p>
+        <ul><!-- 最后一个li 有class=act -->
+            <li class="act"><a href="">用户管理</a></li>
+            <li><a href="">CareManager管理</a></li>
+            <li><a href="">元服务管理</a></li>
+            <li><a href="">专业服务管理</a></li>
+            <li><a href="">关爱服务管理</a></li>
+            <li><a href="">评估量表管理</a></li>
+            <li><a href="">政策管理</a></li>
+            <li><a href="">设备管理</a></li>
+            <li><a href="">知识库管理</a></li>
+            <li class="last"><a href="">分类管理</a></li>
+        </ul>
+    </div>
+    <form method="post" action="" class="reg_area fix_pop" style="width:960px">
+        <h2>服务商评价报告</h2>
+        <div class="mask_contact pad10">
+            <h4>选择时间段：</h4>
+            <ul class="inpubox clearfix">
+                <li><label>开始：</label> <input class="text150 timedate" type="text" /></li>
+                <li><label>结束：</label> <input class="text150 timedate" type="text" /></li>
+            </ul>
+        </div>
+        <div class="mask_contact pad10">
+            <h4>一、基本统计数据</h4>
+            <div class="fix_car">
+                <span>当前服务人数：98人</span>
+                <span>当前投诉次数：98人</span>
+                <span>当前新增人数：98人</span>
+                <span>当前减少人数：98人</span>
+                <b>注：当前服务人数表示该服务提供商所管辖的老年人数量，该部分数据由选择时间段后计算得到</b>
+            </div>
+        </div>
+        <div class="mask_contact pad10">
+            <h4>二、问题及建议</h4>
+            <div class="fix_car">
+                <textarea cols="72" rows="8"></textarea>
+            </div>
+        </div>
+        <div class="mask_contact pad10">
+            <h4>三、评价结论</h4>
+            <div class="fix_car">
+                星级：<select>
+                    <option>★★★★★</option>
+                    <option>★★★★</option>
+                    <option>★★★</option>
+                    <option>★★</option>
+                    <option>★</option>
+                </select><br />
+                <textarea cols="72" rows="8" placeholder="评论内容"></textarea>
+            </div>
+        </div>
+        <p class="opt"><a href="" class="btn">取 消</a><button type="submit" class="btn">添 加</button></p>
+    </form>
+    <div class="footer">
+        
+    </div>
+</div>
+<script type="text/javascript" src="js/lhgcalendar.min.js"></script>
+<script>
+$('.timedate').calendar({ format:'yyyy-MM-dd', zIndex:222222222});
+
+</script>
+</body>
+</html>

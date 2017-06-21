@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+
+<link rel="stylesheet" href="../css/common.css" />
+<script src="../js/jquery-1.8.0.min.js"></script>
+<title>Home</title>
+</head>
+<body>
+
+<header class="top_header">
+    <a href="" class="set">设置</a>
+    <a href="javascript:;" class="back" onclick="window.history.back();">&lt; 返回</a>
+    关爱服务
+</header>
+
+
+<div class="con pad5">
+
+<div class="tab_tit">
+    <a href="" class="act">最近订单</a><a href="">历史订单</a>
+</div>
+
+<div class="list_my_server fix_guanai">
+    <a>
+        <h4>订单编号：123123</h4>
+        <p>订购时间：2014-10-13 22:56</p>
+        <p>订购人姓名：张三</p>
+        <p>订购人电话：1533333</p>
+        <p>订购人地址：北京市</p>
+        <p>订单状态：未分配</p>
+        <span>></span>
+    </a>
+    <a>
+        <h4>订单编号：123123</h4>
+        <p>订购时间：2014-10-13 22:56</p>
+        <p>订购人姓名：张三</p>
+        <p>订购人电话：1533333</p>
+        <p>订购人地址：北京市</p>
+        <p>订单状态：未分配</p>
+        <span>></span>
+    </a>
+    <a>
+        <h4>订单编号：123123</h4>
+        <p>订购时间：2014-10-13 22:56</p>
+        <p>订购人姓名：张三</p>
+        <p>订购人电话：1533333</p>
+        <p>订购人地址：北京市</p>
+        <p>订单状态：未分配</p>
+        <span>></span>
+    </a>
+    <a>
+        <h4>订单编号：123123</h4>
+        <p>订购时间：2014-10-13 22:56</p>
+        <p>订购人姓名：张三</p>
+        <p>订购人电话：1533333</p>
+        <p>订购人地址：北京市</p>
+        <p>订单状态：未分配</p>
+        <span>></span>
+    </a>
+    <a>
+        <h4>订单编号：123123</h4>
+        <p>订购时间：2014-10-13 22:56</p>
+        <p>订购人姓名：张三</p>
+        <p>订购人电话：1533333</p>
+        <p>订购人地址：北京市</p>
+        <p>订单状态：未分配</p>
+        <span>></span>
+    </a>
+</div>
+
+</div>
+
+</body>
+</html>

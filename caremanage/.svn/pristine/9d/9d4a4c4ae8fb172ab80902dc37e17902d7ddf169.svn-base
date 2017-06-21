@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+<s></s>
+<form method="post" action="" class="login_area">
+    <input name="user_name" class="user_name" />
+    <input name="user_pass" class="user_pass" type="password" />
+    <select name="user_type">
+        <option>类型1</option>
+        <option>类型2</option>
+    </select>
+    <button type="submit">登 录</button>
+    <a href="">注 册</button>
+</form>
+
+</body>
+</html>

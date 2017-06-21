@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>社区用户_政策详情</title>
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/shequyonghu.css" />
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header">
+        <span class="logo">老年服务平台</span>
+        <p>欢迎您，社区工作者<a href="">修改密码</a><a href="">注销</a></p>
+        <ul><!-- 最后一个li 有class=act -->
+            <li class="act"><a href="">用户管理</a></li>
+            <li><a href="">CareManager管理</a></li>
+            <li><a href="">元服务管理</a></li>
+            <li><a href="">专业服务管理</a></li>
+            <li><a href="">关爱服务管理</a></li>
+            <li><a href="">评估量表管理</a></li>
+            <li><a href="">政策管理</a></li>
+            <li><a href="">设备管理</a></li>
+            <li><a href="">知识库管理</a></li>
+            <li class="last"><a href="">分类管理</a></li>
+        </ul>
+    </div>
+    <div class="body bodyline pad10">
+        <div class="usertitle strong clearfix"><div class="f_r fr_itbn">状态选择：<select name="" id=""><option value="1">办理</option></select> <button class="pad5 addContact">保存</button><button class="pad5 addContact">返回</button></div>办理公共关系</div>
+        <div class="usedetail clearfix">
+            <div class="f_l left pad10">
+                <div class="udlinebox strong"><span class="f_l">名称：</span><p>北京市老年人优待卡</p></div>
+                <div class="udlinebox mgb10"><span class="f_l">简介：</span><p>为65周岁及以上老年人办理北京市老年人优待卡，可以享受公园、公交免票政策。</p></div>
+                <div class="udlinebox"><span class="f_l">发布单位：</span><p>北京市民政局</p></div>
+                <div class="udlinebox mgb10"><span class="f_l">面向对象：</span><p>65周岁及以上老年人，北京市户籍；或者非北京市户籍的65周岁以上老年人，但须在北京住满一年</p></div>
+                <div class="udlinebox"><span class="f_l">受理单位：</span><p>社区工作站</p></div>
+                <div class="udlinebox"><span class="f_l">附件：</span><p><a href="">65岁及以上老人办理优待卡指南.doc</a><a href="">65周岁及以上老年人信息登记表.doc</a></p></div>
+                <p class="zhu pad10">注：1、附件可以下载</p>
+            </div>
+            <div class="f_l pad10 table47">
+                <p class="mgl20">所需材料：</p>
+                <div class="mgl20 tablebox">
+                    <table class="table100 usertable cen">
+                        <tr><th>序号</th><th>材料名称</th><th>材料状态</th><th>备注</th></tr>
+                        <tr><td>1</td><td>身份证复印件</td><td>已有</td><td></td></tr>
+                        <tr><td>2</td><td>近期一寸白底彩色免冠照片一张</td><td>缺少</td><td></td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer"></div>
+</div>
+</body>
+</html>

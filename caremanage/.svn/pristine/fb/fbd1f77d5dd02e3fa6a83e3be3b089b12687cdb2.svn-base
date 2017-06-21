@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="css/shequyonghu.css" />
+		<link rel="stylesheet" href="css/yonghuguanli.css" />
+		<script src="js/jquery-1.8.0.min.js"></script>
+	</head>
+	
+	<body>
+		<div class="wrapper">
+			<div class="body">
+				<div class="useractbox bodyline pad10 vv">
+					<div class="searchli">
+						<ul class="inpubox clearfix">
+							<li><label>选择日期：</label><input class="text150 timedate"
+								type="text" /> 至 <input class="text150 timedate" type="text" /></li>
+							<li><input class="pad5 ibtn" type="button" value="搜索"></li>
+						</ul>
+					</div>
+					<table class="table100 usertable cen">
+						<tr>
+							<th>序号</th>
+							<th>警报内容</th>
+							<th>警报类型</th>
+							<th>所属服务</th>
+							<th>警报时间</th>
+							<th>响应时间</th>
+							<th>处理人员</th>
+							<th>处理状态</th>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

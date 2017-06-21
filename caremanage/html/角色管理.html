@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>社区用户_权限管理</title>
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/shequyonghu.css" />
+<script src="js/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header">
+        <span class="logo">老年服务平台</span>
+        <p>欢迎您，社区工作者<a href="">修改密码</a><a href="">注销</a></p>
+        <ul><!-- 最后一个li 有class=act -->
+            <li class="act"><a href="">用户管理</a></li>
+            <li><a href="">CareManager管理</a></li>
+            <li><a href="">元服务管理</a></li>
+            <li><a href="">专业服务管理</a></li>
+            <li><a href="">关爱服务管理</a></li>
+            <li><a href="">评估量表管理</a></li>
+            <li><a href="">政策管理</a></li>
+            <li><a href="">设备管理</a></li>
+            <li><a href="">知识库管理</a></li>
+            <li class="last"><a href="">分类管理</a></li>
+        </ul>
+    </div>
+    <div class="body bodyline pad10">
+        <div class="usedetail clearfix">
+            <div class="f_l left pad10">
+                <div class="usertitle mgb10 strong clearfix"><div class="f_r fr_itbn"><button class="pad5 addulimit">添加</button></div>角色</div>
+                <div class="tablebox">
+                    <table class="table100 usertable cen">
+                        <tr><th>名称</th><th>描述</th><th>操作</th></tr>
+                        <tr class="limitid_1"><td>工作角色</td><td>身份证复印件</td><td class="operate"><input  class="editulimit" type="button" limitid='1' value="编辑" /><input limitid='1' class="delulimit mgl5" type="button" value="删除"></td></tr>
+                        <tr class="limitid_2"><td>工作角色1</td><td>身份证复印件</td><td class="operate"><input  class="editulimit" type="button" limitid='2' value="编辑" /><input limitid='2' class="delulimit mgl5" type="button" value="删除"></td></tr>
+                    </table>
+                </div>
+            </div>
+            <div class="f_l pad10 table47">
+                <div class="usertitle mgb10 strong clearfix"><div class="f_r fr_itbn mgb5">&nbsp;</div>权限点</div>
+                <ul class="userlimit">
+                    <li><input type="checkbox" name="" id=""> XXXX菜单</li>
+                    <li><input type="checkbox" name="" id=""> XXXX菜单</li>
+                    <li><input type="checkbox" name="" id=""> XXXX菜单</li>
+                </ul>
+                <div class="centerbtn pad10"><button class="pad5" type="submit">提交</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer"></div>
+</div>
+<div class="limitbox pad10 hide">
+    <ul class="inpubox clearfix">
+        <li><label>角色名称：</label><input class="text150" type="text" /></li>
+        <li><label>描述：</label><textarea name="" id="" cols="30" rows="6"></textarea></li>
+    </ul>
+</div>
+<script type="text/javascript" src="js/layer.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $(".addulimit").click(function(){
+        $.layer({
+            type : 1,
+            title : '添加角色',
+            offset:['150px' , ''],
+            border : false,
+            shadeClose:true,
+            fadeIn: 300,
+            btns: 2,
+            btn: ['保存', '取消'],
+            yes:function(index){
+                console.log("保存",index);
+                layer.close(index);
+            },
+            area : ['450px','270px'],
+            page : {dom : '.limitbox'}
+        });
+    });
+    $(".editulimit").click(function(){
+        var limitid = $(this).attr("limitid");
+        console.log('编辑id'+limitid);
+        $.layer({
+            type : 1,
+            title : '编辑角色',
+            offset:['150px' , ''],
+            border : false,
+            shadeClose:true,
+            fadeIn: 300,
+            btns: 2,
+            btn: ['保存', '取消'],
+            yes:function(index){
+                console.log("保存",index);
+                layer.close(index);
+            },
+            area : ['450px','270px'],
+            page : {dom : '.limitbox'}
+        });
+    });
+    $(".delulimit").click(function(){
+        var limitid = $(this).attr("limitid");
+        layer.confirm('是否确定删除该角色?', function(index){
+            $('.limitid_'+limitid).remove();
+            layer.close(index);
+        }, function(index){
+            console.log(index);
+        });
+    });
+});
+</script>
+</body>
+</html>

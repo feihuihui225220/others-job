@@ -1,0 +1,406 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/shequyonghu.css" />
+<link rel="stylesheet" href="css/yonghuguanli.css" />
+<script src="js/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header">
+        <span class="logo">老年服务平台</span>
+        <p>欢迎您，社区工作者<a href="">修改密码</a><a href="">注销</a></p>
+        <ul><!-- 最后一个li 有class=act -->
+            <li class="act"><a href="">客户管理</a></li>
+            <li><a href="">警报管理</a></li>
+            <li><a href="">责任管理</a></li>
+            <li><a href="">用户管理</a></li>
+            <li><a href="">角色管理</a></li>
+            <li class="last"><a href="">权限管理</a></li>
+        </ul>
+    </div>
+    <div class="body">
+        <div class="usermessbox bodyline pad10 mgb10 clearfix">
+            <div class="umleft f_l clearfix">
+                <div class="userpix pad10 f_l"><img src="css/img/people.png" /></div>
+                <ul class="usermes1 f_l">
+                    <li>姓名：<span class="strong">姓名</span></li>
+                    <li>性别：<span class="strong">姓名</span></li>
+                    <li>年龄：<span class="strong">姓名</span></li>
+                    <li>手机：<span class="strong">姓名</span></li>
+                </ul>
+                <ul class="usermes1 meswidth f_l">
+                    <li>联系电话：<span class="strong">姓名</span></li>
+                    <li>居住情况：<span class="strong">姓名</span></li>
+                    <li>社区名称：<span class="strong">姓名</span></li>
+                    <li>居住地址：<span class="strong">姓名</span></li>
+                </ul>
+            </div>
+            <div class="umright f_r">
+                <ul class="clearfix">
+                    <li>正常进食</li>
+                    <li>少量运动</li>
+                    <li>情绪高涨</li>
+                    <li>爱好广泛</li>
+                    <li>不愿参与</li>
+                    <li>身体健康</li>
+                </ul>
+            </div>
+        </div>
+        <div class="useractbox bodyline pad10">
+            <ul class="clourstitle strong mgb10">
+                <li index="1" class="rel on">计划</li>
+                <li index="2" class="rel">专业服务</li>
+                <li index="3" class="rel">警报</li>
+                <li index="4" class="rel">评估</li>
+                <li index="5" class="rel">状态</li>
+				<li index="6" class="rel">基本信息</li>
+				<li index="7" class="rel">特征信息</li>
+				<li index="8" class="rel">联系人</li>
+            </ul>
+            <div class="actboxlist">
+                <div class="actbox1">
+                    <table class="table100 usertable cen">
+                        <tr><th>服务名称</th><th>开通时间</th><th>到期时间</th><th>设备类型</th><th>状态</th></tr>
+                        <tr><td>1</td><td>100岁高龄津贴</td><td>BJ-EL-0006</td><td>材料不全</td></tr>
+                        <tr><td>2</td><td>北京市老年人优待卡</td><td>BJ-EL-0006</td><td>已办理</td></tr>
+                        <tr><td>3</td><td>居家养老服务补贴折抵敬老院费</td><td>BJ-EL-0006</td><td>18933334444</td></tr>
+                        <tr><td>4</td><td>北京市老年人优待卡</td><td>BJ-EL-0006</td><td>未确认</td></tr>
+                        <tr><td>5</td><td>居家养老服务补贴折抵敬老院费</td><td>BJ-EL-0006</td><td>已办理</td></tr>
+                    </table>
+                </div>
+                <div class="actbox2 hide">
+					<div class="useractbox bodyline pad10 vv hide">
+						<ul class="ooootitle strong mgb10">
+							<li index="1" class="rel on">历史数据</li>
+							<li index="2" class="rel">服务计划</li>
+							<li index="3" class="rel">评估</li>
+							<li index="4" class="rel">服务报告</li>
+							<li index="5" class="rel">实时消息</li>
+							<li index="6" class="rel">警报阀值</li>
+							<li class="close_rel">返回</li>
+						</ul>
+						<div class="oooolist">
+							<div class="oooo1">
+								<div class="searchli">
+									<ul class="inpubox clearfix">
+										<li><label>选择日期：</label><input class="text150 timedate" type="text" /> 至 <input class="text150 timedate" type="text" /></li>
+										<li><input class="pad5 ibtn" type="button" value="搜索"></li>
+									</ul>
+								</div>
+								<table class="table100 usertable cen">
+									<tr><th>序号</th><th>警报内容</th><th>警报类型</th><th>所属服务</th><th>警报时间</th><th>响应时间</th><th>处理人员</th><th>处理状态</th></tr>
+									<tr><td>1</td><td>180</td><td>舒张压上线</td><td>血压测量服务</td><td>2014-1-1 11:22:32</td><td>2014-1-1 11:22:32</td><td>王五</td><td>已处理</td></tr>
+									<tr><td>2</td><td>180</td><td>舒张压上线</td><td>血压测量服务</td><td>2014-1-1 11:22:32</td><td></td><td>王五</td><td>未处理</td></tr>
+								</table>
+							</div>
+							<div class="oooo2 hide"></div>
+							<div class="oooo3 hide">
+								<table class="table100 usertable cen">
+									<tr><th>序号</th><th>评估质量名称</th><th>评估质量内容</th><th>操作</th></tr>
+									<tr><td>1</td><td>XXXX评估量表</td><td>分数类</td><td><span class="tb_edit">开始评估</span></td></tr>
+									<tr><td>2</td><td>XXXX评估量表</td><td>组合类</td><td><span class="tb_edit">开始评估</span></td></tr>
+								</table>
+							</div>
+							<div class="oooo4 hide">
+								<div class="searchli">
+									<ul class="inpubox clearfix">
+										<li><label>选择日期：</label><input class="text150 timedate" type="text" /> 至 <input class="text150 timedate" type="text" /></li>
+										<li><input class="pad5 ibtn" type="button" value="搜索"></li>
+										<li class="rightbtn pad10"><button class="pad5 addEvidence">添加报告</button></li>
+									</ul>
+								</div>
+								<div class="pj_result">
+									<div class="pj_result_list">
+										<p class="pj_result_list_p1">2014-09-01</p><span class="pj_result_list_span">服务报告：</span>
+										<p class="pj_result_list_p2">血压总体稳定，干预效果明显，继续保持。</p>
+									</div>
+									<div class="pj_result_list">
+										<p class="pj_result_list_p1">2014-09-01</p><span class="pj_result_list_span">服务报告：</span>
+										<p class="pj_result_list_p2">血压总体稳定，干预效果明显，继续保持。</p>
+									</div>
+									<div class="pj_result_list">
+										<p class="pj_result_list_p1">2014-09-01</p><span class="pj_result_list_span">服务报告：</span>
+										<p class="pj_result_list_p2">血压总体稳定，干预效果明显，继续保持。</p>
+									</div>
+									<div class="pj_result_list">
+										<p class="pj_result_list_p1">2014-09-01</p><span class="pj_result_list_span">服务报告：</span>
+										<p class="pj_result_list_p2">血压总体稳定，干预效果明显，继续保持。</p>
+									</div>
+								</div>
+								<div class="rightbtn pad10"><button class="pad5 addEvidence">显示更多</button></div>
+							</div>
+							<div class="oooo5 hide">
+								<div class="jianyi">
+									<p class="jianyi_p">近期血压不稳定，请按时锻炼</p>
+									<span class="jianyi_span">2014-08-10</span>
+								</div>
+								<div class="huifujianyi">
+									<p class="huifujianyi_p">请在这里输入实时消息</p>
+									<textarea name="" id="" style="width:99%; height:100px; margin:0 auto; display:block; margin-bottom:10px;"></textarea>
+									<input class="pad5 ibtn" type="button" value="提交" style="width:100px; height:50px; margin:0 auto; display:block;">
+								</div>
+							</div>
+							<div class="oooo6 hide">
+								<ul class="inpubox2 clearfix">
+									<li><label>收缩压阀值：</label><input class="text50" type="text" /> 至 <input class="text50" type="text" /></li>
+									<li><label>舒张压阀值：</label><input class="text50" type="text" /> 至 <input class="text50" type="text" /></li>
+									<li><label>心率：</label><input class="text50" type="text" /> 至 <input class="text50" type="text" /></li>
+								</ul>
+								<ul class="inpubox3 clearfix">
+									<li><label>是否报警：</label><select class="select160" name="" id=""><option value="0">是</option><option value="1">否</option></select></li>
+									<li><label>是否报警：</label><select class="select160" name="" id=""><option value="0">是</option><option value="1">否</option></select></li>
+									<li><label>是否报警：</label><select class="select160" name="" id=""><option value="0">是</option><option value="1">否</option></select></li>
+								</ul>
+								<input class="pad5 ibtn fazhi" type="button" value="提交" style="width:100px; height:50px; margin:0 auto; display:block;">
+							</div>
+							
+						</div>
+					</div>
+					<div class="vvvq">
+						<div class="searchli">
+							<ul class="inpubox clearfix">
+								<li><label>服务人员为：</label>张三</li>
+								<li><input class="pad5 ibtn" type="button" value="分配"></li>
+							</ul>
+						</div>
+						<table class="table100 usertable cen">
+							<tr><th>服务名称</th><th>开通时间</th><th>到期时间</th><th>设备类型</th><th>状态</th></tr>
+							<tr class="actbox2_a"><td>心律测试</td><td>2013.1.1</td><td>2015.1.1</td><td>HP801</td><td>服务中</td></tr>
+							<tr class="actbox2_a"><td>高血压管理服务</td><td>2013.1.1</td><td>2015.1.1</td><td>P2</td><td>到期</td></tr>
+						</table>
+					</div>
+                </div>
+                <div class="actbox3 hide">
+					<div class="searchli">
+						<ul class="inpubox clearfix">
+							<li><label>警报日期：</label><input class="text150 timedate" type="text" /> 至 <input class="text150 timedate" type="text" /></li>
+							<li><input class="pad5 ibtn" type="button" value="搜索"></li>
+						</ul>
+					</div>
+					<table class="table100 usertable cen">
+                        <tr><th>序号</th><th>警报内容</th><th>警报类型</th><th>所属服务</th><th>警报时间</th><th>响应时间</th><th>处理人员</th><th>处理状态</th></tr>
+                        <tr><td>1</td><td>180</td><td>舒张压上线</td><td>血压测量服务</td><td>2014-1-1 11:22:32</td><td>2014-1-1 11:22:32</td><td>王五</td><td>已处理</td></tr>
+                        <tr><td>2</td><td>180</td><td>舒张压上线</td><td>血压测量服务</td><td>2014-1-1 11:22:32</td><td></td><td>王五</td><td>未处理</td></tr>
+                    </table>
+                </div>
+                <div class="actbox4 hide">
+                    <div class="searchli">
+						<ul class="inpubox clearfix">
+							<li><label>选择日期：</label><input class="text150 timedate" type="text" /> 至 <input class="text150 timedate" type="text" /></li>
+							<li><input class="pad5 ibtn" type="button" value="搜索"></li>
+						</ul>
+					</div>
+					<div class="pj_result">
+						<div class="pj_result_list">
+							<p class="pj_result_list_p1">《XXXXX评估结果》</p><span class="pj_result_list_span">2014年7月21日</span>
+							<p class="pj_result_list_p2">此处显示评估结果的具体内容</p>
+						</div>
+						<div class="pj_result_list">
+							<p class="pj_result_list_p1">《XXXXX评估结果》</p><span class="pj_result_list_span">2014年7月21日</span>
+							<p class="pj_result_list_p2">此处显示评估结果的具体内容</p>
+						</div>
+						<div class="pj_result_list">
+							<p class="pj_result_list_p1">《XXXXX评估结果》</p><span class="pj_result_list_span">2014年7月21日</span>
+							<p class="pj_result_list_p2">此处显示评估结果的具体内容</p>
+						</div>
+						<div class="pj_result_list">
+							<p class="pj_result_list_p1">《XXXXX评估结果》</p><span class="pj_result_list_span">2014年7月21日</span>
+							<p class="pj_result_list_p2">此处显示评估结果的具体内容</p>
+						</div>
+					</div>
+					<div class="rightbtn pad10"><button class="pad5 addEvidence">显示更多</button></div>
+                </div>
+                <div class="actbox5 hide">
+					<div class="searchli">
+						<ul class="inpubox clearfix">
+							<li><label>选择日期：</label><input class="text150 timedate" type="text" /> 至 <input class="text150 timedate" type="text" /></li>
+							<li><input class="pad5 ibtn" type="button" value="搜索"></li>
+							<li class="rightbtn pad10"><button class="pad5 addEvidence">添加状态信息</button></li>
+						</ul>
+					</div>
+                    <table class="table100 usertable cen">
+                        <tr><th>时间</th><th>饮食</th><th>运动</th><th>精神状态</th><th>休闲爱好</th><th>社会支持</th><th>医疗健康</th><th>备注</th><th>填报人员</th></tr>
+                        <tr><td>2014-08-10</td><td>进食困难</td><td>运动达人</td><td>精神矍铄</td><td>舞蹈</td><td>邻里和睦</td><td>健康</td><td>除饮食外，暂时不需要别的服务</td><td>张飞</td></tr>
+						<tr><td>2014-08-10</td><td>进食困难</td><td>运动达人</td><td>精神矍铄</td><td>舞蹈</td><td>邻里和睦</td><td>健康</td><td>除饮食外，暂时不需要别的服务</td><td>张飞</td></tr>
+						<tr><td>2014-08-10</td><td>进食困难</td><td>运动达人</td><td>精神矍铄</td><td>舞蹈</td><td>邻里和睦</td><td>健康</td><td>除饮食外，暂时不需要别的服务</td><td>张飞</td></tr>
+					</table>
+                </div>
+				<div class="actbox6 hide">
+					<table class="table100 usertable cen">
+                        <tr><th>姓名</th><td>张三</td><th>婚姻状况</th><td>已婚</td><th>街道名称</th><td>羊坊路</td></tr>
+						<tr><th>身份证号</th><td>110101191011231121</td><th>手机</th><td>13811211111</td><th>社区名称</th><td>茂林居</td></tr>
+						<tr><th>性别</th><td>女</td><th>联系电话</th><td>010-68717373</td><th>居住住址</th><td>北京市西城区白云观街北里3号楼1门202室</td></tr>
+						<tr><th>出生日期</th><td>1910/8/27</td><th>政治面貌</th><td>中共党员</td><th>居住情况</th><td>与子女同住</td></tr>
+						<tr><th>年龄</th><td>104</td><th>文化程度</th><td>大专</td><th>从业状况</th><td>退休</td></tr>
+						<tr><th>宗教信仰</th><td>无</td><th>民族</th><td>汉</td><th>经济来源</th><td>退休金</td></tr>
+						<tr><th>户口类型</th><td>本市非农业户口</td><th>省市名称</th><td>海淀区</td><th>医疗保障</th><td>医保</td></tr>
+					</table>
+                </div>
+				<div class="actbox7 hide">
+					<table class="table100 usertable cen">
+                        <tr><th>三无</th><td>否</td><th>失能</th><td>否</td><th>无保障</th><td>否</td></tr>
+						<tr><th>孤寡</th><td>否</td><th>低保</th><td>否</td><th>空巢</th><td>否</td></tr>
+						<tr><th>失独</th><td>否</td><th>优抚</th><td>否</td><th>独居</th><td>否</td></tr>
+					</table>
+                </div>
+				<div class="actbox8 hide">
+					<table class="table100 usertable cen">
+                        <tr><th>联系人姓名</th><th>与用户关系</th><th>联系方式</th></tr>
+                        <tr><td>张小三</td><td>父子</td><td>13800138000</td></tr>
+						<tr><td>张小三</td><td>父子</td><td>13800138000</td></tr>
+						<tr><td>张小三</td><td>父子</td><td>13800138000</td></tr>
+					</table>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="footer"></div>
+</div>
+<div class="mask_contact pad10 hide">
+    <ul class="inpubox clearfix">
+        <li><label>姓名：</label><input class="text150" type="text" /></li>
+        <li><label>身份证号：</label><input class="text150" type="text" /></li>
+        <li><label>性别：</label><select class="select160" name="" id=""><option value="0">全部</option><option value="0">全部</option></select></li>
+        <li><label>出生日期：</label><input class="text150 timedate" type="text" /></li>
+        <li><label>手机：</label><input class="text150" type="text" /></li>
+        <li><label>与用户关系：</label><input class="text150" type="text" /></li>
+        <li class="w520"><label>居住地址：</label><input class="text150" type="text" /></li>
+    </ul>
+    <!--div class="centerbtn pad10"><button class="pad5" type="submit">保存</button><button class="pad5 contact_closed">取消</button></div-->
+</div>
+<div class="mask_evidence pad10 hide">
+    <ul class="inpubox clearfix">
+        <li><label>材料类型：</label><select class="select160" name="" id=""><option value="0">全部</option><option value="0">全部</option></select></li>
+        <div><button id="addfile">增加附件</button></div>
+        <div class="iptdiv"><input type="file" name="file[]" class="ipt" /><a href="#" name="rmlink"> X </a></div>
+    </ul>
+    <!--div class="centerbtn pad10"><button class="pad5" type="submit">保存</button><button class="pad5 contact_closed">取消</button></div-->
+</div>
+<script type="text/javascript" src="js/layer.min.js"></script>
+<script type="text/javascript" src="js/lhgcalendar.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $(".clourstitle li").click(function(){
+        var index = $(this).attr('index');
+        $(this).addClass('on').siblings().removeClass('on');
+        $(".actboxlist .actbox"+index).show().siblings().hide();
+    });
+	
+	 $(".ooootitle li").click(function(){
+        var index = $(this).attr('index');
+        $(this).addClass('on').siblings().removeClass('on');
+        $(".oooolist .oooo"+index).show().siblings().hide();
+    });
+	$(".actbox2_a").click(function(){
+		$(".vv").show();
+		$(".vvvq").hide();
+	});
+	
+	$(".close_rel").click(function(){
+		$(".vv").hide();
+		$(".actbox2").show();
+		$(".vvvq").show();
+	});
+	
+	
+	
+    $('.addContact').on('click', function(){
+        $.layer({
+            type : 1,
+            title : '添加联系人信息',
+            offset:['150px' , ''],
+            border : false,
+            shadeClose:true,
+            fadeIn: 300,
+            zIndex:99,
+            btns: 2,
+            success:function(){
+                $(".timedate").calendar({ format:'yyyy-MM-dd' });
+            },
+            btn: ['保存', '取消'],
+            yes:function(index){
+                console.log("保存",index);
+                layer.close(index);
+            },
+            area : ['603px','355px'],
+            page : {dom : '.mask_contact'}
+        });
+    });
+    $('.addEvidence').on('click', function(){
+        $.layer({
+            type : 1,
+            title : '添加证据信息',
+            offset:['150px' , ''],
+            border : false,
+            shadeClose:true,
+            fadeIn: 300,
+            btns: 2,
+            btn: ['保存', '取消'],
+            yes:function(index){
+                console.log("保存",index);
+                layer.close(index);
+            },
+            area : ['603px','auto'],
+            page : {dom : '.mask_evidence'}
+        });
+    });
+    $('.editEvidence').on('click', function(){
+        var evdeid = $(this).attr("evdeid");
+        console.log('编辑id'+evdeid);
+        $.layer({
+            type : 1,
+            title : '编辑证据信息',
+            offset:['150px' , ''],
+            border : false,
+            shadeClose:true,
+            fadeIn: 300,
+            btns: 2,
+            btn: ['保存', '取消'],
+            yes:function(index){
+                console.log("保存",index);
+                layer.close(index);
+            },
+            area : ['603px','auto'],
+            page : {dom : '.mask_evidence'}
+        });
+    });
+    $(".delEvidence").click(function(){
+        var evdeid = $(this).attr("evdeid");
+        layer.confirm('是否确定删除该证据信息?', function(index){
+            $('.evdeid_'+evdeid).remove();
+            layer.close(index);
+        }, function(index){
+            console.log(index);
+        });
+    });
+    /*$(".contact_closed").on('click',function(){
+        layer.close(layer.index);
+    });*/
+    // 用来绑定事件(使用unbind避免重复绑定)
+    function bindListener(){
+         $("a[name=rmlink]").unbind().click(function(){
+             $(this).parent().remove(); 
+             $(".xubox_main").height($(".xubox_main").height()-21);
+         })
+    }
+    $("#addfile").click(function(){
+        addfile();
+    });
+    function addfile(){ 
+       $(".mask_evidence .inpubox").append('<div class="iptdiv"><input type="file" name="img[]" class="ipt" /><a href="#" name="rmlink"> X </a></div>');
+
+    // 为新元素节点添加事件侦听器
+       bindListener();
+       $(".xubox_main").height($(".xubox_main").height()+21);
+    } 
+    
+});
+</script>
+</body>
+</html>

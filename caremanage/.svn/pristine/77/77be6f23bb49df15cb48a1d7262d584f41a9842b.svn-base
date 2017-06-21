@@ -1,0 +1,479 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>用户管理</title>
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/yonghuguanli.css" />
+<script src="js/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header" style="-display:none">
+        <span class="logo">老年服务平台</span>
+        <p>欢迎您，社区工作者<a href="">修改密码</a><a href="">注销</a></p>
+        <ul><!-- 最后一个li 有class=act -->
+            <li class="act"><a href="">用户管理</a></li>
+            <li><a href="">CareManager管理</a></li>
+            <li><a href="">元服务管理</a></li>
+            <li><a href="">专业服务管理</a></li>
+            <li><a href="">关爱服务管理</a></li>
+            <li><a href="">评估量表管理</a></li>
+            <li><a href="">政策管理</a></li>
+            <li><a href="">设备管理</a></li>
+            <li><a href="">知识库管理</a></li>
+            <li class="last"><a href="">分类管理</a></li>
+        </ul>
+    </div>
+    <div class="body fix_body">
+        <div class="f_l">
+            <div id="tree">
+                <h2>全国</h2>
+                <ul>
+                    <li><s></s><span>北京市</span></li>
+                    <li><s></s><span>天津市</span></li>
+                    <li><s></s><span>河北省</span></li>
+                    <li><s></s><span>山西省</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="f_r">
+            <div id="tree_show">
+                <div class="btn_box"><button class="btn add" type="button">添 加</button></div>
+                <table class="tb table_col3">
+                    <col class="col1"/><col class="col2"/><col class="col3"/>
+                    <tr><th>序号</th><th>名称</th><th>操作</th></tr>
+                </table>
+                <table class="tb hide">
+                    <col class="col1"/><col class="col2"/><col class="col3"/><col class="col4"/><col class="col5"/><col class="col6"/><col class="col7"/><col class="col8"/><col class="col9"/>
+                    <tr>
+                        <th>序号</th>
+                        <th>姓名</th>
+                        <th>密码</th>
+                        <th>性别</th>
+                        <th>电话</th>
+                        <th>手机</th>
+                        <th>邮箱</th>
+                        <th>地址</th>
+                        <th>操作</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>
+</div>
+<script>
+$(function(){
+    //左侧高度
+    $('.f_l').css('height', $(window).height()+120);
+    $('.f_r').css('height', $(window).height()+120);
+
+    //首先渲染左侧树
+    $.ajax({
+        url     :   'http://114.251.187.73:8080/community/getCountrys/0',
+        dataType:   'jsonp',
+        jsonp   :   'callback',
+        success :   function (json) {
+                       var arr = [];
+                       if (json.code == 0) {
+                           $('#tree>ul').html('');
+                           for (var i=0; i<json.data.length; i++) {
+                               //$('#tree>ul').append('<li data-id='+json.data[i].id+'><s></s><span>'+json.data[i].name+'</span></li>');
+                               (function (index) {
+                                    $.ajax({
+                                        url     :   'http://114.251.187.73:8080/community/getCountrys/'+json.data[index].id,
+                                        dataType:   'jsonp',
+                                        jsonp   :   'callback',
+                                        success :   function (jsonIn) {
+                                            //$('#tree>ul').append('<li data-id='+json.data[index].id+'><s></s><span>'+json.data[index].name+'</span></li>');
+                                            arr.push('<li data-id='+json.data[index].id+'><s></s><span>'+json.data[index].name+'</span></li>');
+                                        }
+                                   });
+                               })(i);
+                           }
+                       }
+                        var timer = setInterval(function () {
+                            if (arr.length == json.data.length) {
+                                clearInterval(timer);
+                               arr.sort(function (a, b) {
+                                    return a.match(/\d+/)[0] - b.match(/\d+/)[0];
+                                });
+                                for (var i=0; i<arr.length; i++) {
+                                    $('#tree>ul').append(arr[i]);
+                                }
+                                $('#tree>ul').append(arr);
+                                $('.table_col3').html('<col class="col1"/><col class="col2"/><col class="col3"/><tr><th>序号</th><th>名称</th><th>操作</th></tr>');
+                                $('#tree>ul>li').each(function (index,domEle) {
+                                    $('#tree_show').find('.table_col3').append('<tr><td>'+(index+1)+'</td><td>'+$(domEle).find('span').html()+'</td><td><span class="tb_edit">编 辑</span><span class="tb_remove">删 除</span></td></</tr>');
+                                });
+                            }
+                        }, 20);
+                    }
+    });
+
+
+
+    var aTrackAct = [];//用数组存每一层的位置
+    var aTrackSTag = [];//用数组存每一层的展开按钮
+
+    //左侧树结构开始
+    //如果到了最后一层，删除s标签
+    $('#tree li s').filter(function (index) {
+        return $(this).parent().children().length == 2;
+    }).remove();
+    //如果到了最后一层，让没有s元素的li和有s元素的li对齐
+    $('#tree li span').filter(function (index) {
+        return $(this).parent().children().length == 1;
+    }).css('paddingLeft', '18px');
+
+    //点击文字让当前激活，其他恢复状态
+    //todu,添加ajax后，让他自动激活
+    $('#tree li span').live('click', function () {
+        $('#tree li span').removeClass('act');
+        $(this).addClass('act');
+
+        aTrackAct = [];
+        $(this).parents('li').each(function () {
+            aTrackAct.push($(this).index());
+        });
+        aTrackAct.reverse();
+
+        if (aTrackAct.length<5) {
+            $('#tree_show table:eq(0)').show();
+            $('#tree_show table:eq(1)').hide();
+        } else {
+            $('#tree_show table:eq(0)').hide();
+            $('#tree_show table:eq(1)').show();
+        }
+
+        console.log(aTrackAct)
+
+        //左侧树和右侧表格关联
+        if ($(this).parent().children().length == 3) {//如果不是最后一级
+            $('.table_col3').html('<col class="col1"/><col class="col2"/><col class="col3"/><tr><th>序号</th><th>名称</th><th>操作</th></tr>');
+            $(this).next().children().each(function (index,domEle) {
+                $('#tree_show').find('.table_col3').append('<tr><td>'+(index+1)+'</td><td>'+$(domEle).find('span').html()+'</td><td><span class="tb_edit">编 辑</span><span class="tb_remove">删 除</span></td></</tr>');
+            });
+        } else {
+            $('.table_col3').html('<col class="col1"/><col class="col2"/><col class="col3"/><tr><th>序号</th><th>名称</th><th>操作</th></tr>');
+        }
+    });
+
+    //点击加减图标控制展开
+    $('#tree li s').live('click', function () {
+        clearInterval(timer);//下面用定时器获判断子集是不是加载完，好展开，这里清空防止连续点击
+        var _this = $(this);//为下面定时器
+
+        aTrackSTag = [];
+        $(this).parents('li').each(function () {
+            aTrackSTag.push($(this).index());
+        });
+        aTrackSTag.reverse();
+        console.log(aTrackSTag)//作用于aTrackAct蕾丝
+
+        if($(this).hasClass('on')) {
+            $(this).removeClass('on');
+            //$(this).next().next().css('display', 'none');//没有加ajax时候隐藏
+            if ($(_this).next().next().get(0).tagName == 'UL') {
+                $($(_this).next().next().get(0)).remove();//加了ajax要删除
+            }
+        } else {
+            $(this).addClass('on');
+            $.ajax({
+                url     :    'http://114.251.187.73:8080/community/getCountrys/'+$(this).parent().attr('data-id'),
+                dataType:   'jsonp',
+                jsonp   :   'callback',
+                success :   function (json) {
+                    if (json.code == 0) {
+                        switch (aTrackSTag.length) {
+                            case 1 :
+                                $('#tree>ul>li:eq('+aTrackSTag[0]+')').append('<ul></ul>');
+                                break;
+                            case 2 :
+                                $('#tree>ul>li:eq('+aTrackSTag[0]+')>ul>li:eq('+aTrackSTag[1]+')').append('<ul></ul>');
+                                break;
+                            case 3 :
+                                $('#tree>ul>li:eq('+aTrackSTag[0]+')>ul>li:eq('+aTrackSTag[1]+')>ul>li:eq('+aTrackSTag[2]+')').append('<ul></ul>');
+                                break;
+                            case 4 :
+                                $('#tree>ul>li:eq('+aTrackSTag[0]+')>ul>li:eq('+aTrackSTag[1]+')>ul>li:eq('+aTrackSTag[2]+')>ul>li:eq('+aTrackSTag[3]+')').append('<ul></ul>');
+                                break;
+                        }
+                        for (var i=0; i<json.data.length; i++) {
+                           //$('#tree>ul').append('<li data-id='+json.data[i].id+'><s></s><span>'+json.data[i].name+'</span></li>');
+                            (function (index) {
+                                $.ajax({
+                                    url     :   'http://114.251.187.73:8080/community/getCountrys/'+json.data[index].id,
+                                    dataType:   'jsonp',
+                                    jsonp   :   'callback',
+                                    success :   function (jsonIn) {
+                                        //$('#tree>ul').append('<li data-id='+json.data[index].id+'><s></s><span>'+json.data[index].name+'</span></li>');
+                                        switch (aTrackSTag.length) {
+                                            case 1 :
+                                                if (jsonIn.data.length > 0) {
+                                                    $('#tree>ul>li:eq('+aTrackSTag[0]+')>ul').append('<li data-id='+json.data[index].id+'><s></s><span>'+json.data[index].name+'</span></li>')
+                                                } else {
+                                                    $('#tree>ul>li:eq('+aTrackSTag[0]+')>ul').append('<li data-id='+json.data[index].id+'><span style="padding-left:18px;">'+json.data[index].name+'</span></li>')
+                                                }
+                                                break;
+                                            case 2 :
+                                                if (jsonIn.data.length > 0) {
+                                                    $('#tree>ul>li:eq('+aTrackSTag[0]+')>ul>li:eq('+aTrackSTag[1]+')>ul').append('<li data-id='+json.data[index].id+'><s></s><span>'+json.data[index].name+'</span></li>');
+                                                } else {
+                                                    $('#tree>ul>li:eq('+aTrackSTag[0]+')>ul>li:eq('+aTrackSTag[1]+')>ul').append('<li data-id='+json.data[index].id+'><span style="padding-left:18px;">'+json.data[index].name+'</span></li>');
+                                                }
+
+                                                break;
+                                            case 3 :
+                                                if (jsonIn.data.length > 0) {
+                                                    $('#tree>ul>li:eq('+aTrackSTag[0]+')>ul>li:eq('+aTrackSTag[1]+')>ul>li:eq('+aTrackSTag[2]+')>ul').append('<li data-id='+json.data[index].id+'><s></s><span>'+json.data[index].name+'</span></li>');
+                                                } else {
+                                                     $('#tree>ul>li:eq('+aTrackSTag[0]+')>ul>li:eq('+aTrackSTag[1]+')>ul>li:eq('+aTrackSTag[2]+')>ul').append('<li data-id='+json.data[index].id+'><span style="padding-left:18px;">'+json.data[index].name+'</span></li>');
+                                                }
+
+                                                break;
+                                            case 4 :
+                                                if (jsonIn.data.length > 0) {
+                                                    $('#tree>ul>li:eq('+aTrackSTag[0]+')>ul>li:eq('+aTrackSTag[1]+')>ul>li:eq('+aTrackSTag[2]+')>ul>li:eq('+aTrackSTag[3]+')>ul').append('<li data-id='+json.data[index].id+'><s></s><span>'+json.data[index].name+'</span></li>');
+                                                } else {
+                                                    $('#tree>ul>li:eq('+aTrackSTag[0]+')>ul>li:eq('+aTrackSTag[1]+')>ul>li:eq('+aTrackSTag[2]+')>ul>li:eq('+aTrackSTag[3]+')>ul').append('<li data-id='+json.data[index].id+'><span style="padding-left:18px;">'+json.data[index].name+'</span></li>');
+                                                }
+                                                break;
+                                        }
+                                    }
+                               });
+                            })(i);
+                        }
+                    }
+                }
+            });
+            //定时器判断加载完毕，起循环ajax回调的作用
+            var timer = setInterval(function () {
+                console.log($(_this).parent())
+                if ($(_this).next().next().get(0) && $(_this).next().next().get(0).tagName == 'UL') {
+                    clearInterval(timer);
+                    $(_this).next().next().css('display', 'block');
+                }
+            }, 20);
+            
+        }
+    });
+    //左侧树结构结束
+
+
+    //开始右侧内容，右侧table根据左侧树结构渲染
+    function tableRight() {
+        $('.table_col3').html('<tr><th>序号</th><th>名称</th><th>操作</th></tr>');
+        $('#tree>ul>li').each(function (index, domEle) {
+            //console.log(domEle)
+            $('.table_col3').append('<tr><td>'+(index+1)+'</td><td>'+$(domEle).find('span').html()+'</td><td><span class="tb_edit">编 辑</span><span class="tb_remove">删 除</span></td></</tr>')
+        });
+    }
+    tableRight();
+
+    //左侧s标签点击，弹窗值清空
+    function leftAddClass() {
+        tableRight();
+        $('#tb_pop input').val('');
+        $('#tb_pop').remove();
+        $('#tree .act').trigger('click');
+        $('#tree .act').prev().addClass('on');
+        $('#tree .act').next().css('display', 'block');
+    }
+
+    //右侧添加按钮
+    $('#tree_show .btn').live('click', function () {
+        if (aTrackAct.length < 5) {
+            $('#tree_show').append(tbPop);
+            $('#tree_show table:eq(0)').show();
+            $('#tree_show table:eq(1)').hide();
+            switch ($('#tree .act').parents('ul').length) {//根据多少个父级ul，判断显示文本
+                case 1 :
+                    $('#tb_pop b').html('市 名称');
+                    break;
+                case 2 :
+                    $('#tb_pop b').html('区名称');
+                    break;
+                case 3 :
+                    $('#tb_pop b').html('街道 名称');
+                    break;
+                case 4 :
+                    $('#tb_pop b').html('社区 名称');
+                    break;
+            }
+        } else {
+            $('#tree_show').append(tbPop3);
+            $('#tree_show table:eq(0)').hide();
+            $('#tree_show table:eq(1)').show();
+        }
+
+        //$('#tb_pop .tb_edit').live('click', function () {
+        /*$(tbPop3).find('.tb_edit').click(function () {
+            if (aTrackAct.length < 5) {
+                if ($('#tb_pop input:eq(0)').val()) {//弹窗必须输入文本
+                    if ($('#tree .act').length) {//判断如果不是省级
+                        if ($('#tree .act').next().length) {//如果有子集
+                            //console.log($('#tree .act'))
+                            $('#tree .act').parent().find('ul').append('<li><span style="padding-left:18px;">'+$('#tb_pop input:eq(0)').val()+'</span></li>')
+                        } else {
+                            $('#tree .act').css('paddingLeft', 0).parent().append('<ul><li><span style="padding-left:18px;">'+$('#tb_pop input:eq(0)').val()+'</span></li></ul>')
+                            $('#tree .act').before('<s></s>');
+                            $('#tree .act').prev().trigger('click');
+                        }
+                    } else {//如果是省级
+                        $('#tree>ul').append('<li><span style="padding-left:18px;">'+$('#tb_pop input:eq(0)').val()+'</span></li>');
+                    }
+                    leftAddClass();
+                } else {
+                    return false;
+                }
+            } else {//最后一级
+                alert(1)
+                $('#tree_show table:eq(1)').append('<tr><td>'+$('#tree_show table:eq(1) tr').length+'</td><td>'+$(tbPop3).find('input:eq(0)').val()+'</td><td>'+$(tbPop3).find('input:eq(1)').val()+'</td><td>'+$(tbPop3).find('select:eq(0)').val()+'</td><td>'+$(tbPop3).find('input:eq(2)').val()+'</td><td>'+$(tbPop3).find('input:eq(3)').val()+'</td><td>'+$(tbPop3).find('input:eq(4)').val()+'</td><td>'+$(tbPop3).find('input:eq(5)').val()+'</td><td><span class="tb_edit">编辑</span><span class="tb_remove">删除</span></td></tr>');
+                $('#tb_pop input').val('');
+                $('#tb_pop').remove();
+            }
+        });*/
+
+        $(tbPop).find('.tb_edit').unbind('click');
+        $(tbPop).find('.tb_edit').click(function () {
+            if ($('#tb_pop input:eq(0)').val()) {//弹窗必须输入文本
+                if ($('#tree .act').length) {//判断如果不是省级
+                    if ($('#tree .act').next().length) {//如果有子集
+                        //console.log($('#tree .act'))
+                        $('#tree .act').parent().find('ul').append('<li><span style="padding-left:18px;">'+$('#tb_pop input:eq(0)').val()+'</span></li>')
+                    } else {
+                        $('#tree .act').css('paddingLeft', 0).parent().append('<ul><li><span style="padding-left:18px;">'+$('#tb_pop input:eq(0)').val()+'</span></li></ul>')
+                        $('#tree .act').before('<s></s>');
+                        $('#tree .act').prev().trigger('click');
+                    }
+                } else {//如果是省级
+                    $('#tree>ul').append('<li><span style="padding-left:18px;">'+$('#tb_pop input:eq(0)').val()+'</span></li>');
+                }
+                leftAddClass();
+            } else {
+                return false;
+            }
+            $(tbPop).find('input:eq(1)').val($('#tree .act').parent().attr('data-id'));
+            $(tbPop).find('input:eq(2)').val(aTrackAct.length);
+            $(this).parent().parent().submit();
+        });
+
+        $(tbPop3).find('.tb_edit').unbind('click');
+        $(tbPop3).find('.tb_edit').click(function () {
+            $('#tree_show table:eq(1)').append('<tr><td>'+$('#tree_show table:eq(1) tr').length+'</td><td>'+$(tbPop3).find('input:eq(0)').val()+'</td><td>'+$(tbPop3).find('input:eq(1)').val()+'</td><td>'+$(tbPop3).find('select:eq(0)').val()+'</td><td>'+$(tbPop3).find('input:eq(2)').val()+'</td><td>'+$(tbPop3).find('input:eq(3)').val()+'</td><td>'+$(tbPop3).find('input:eq(4)').val()+'</td><td>'+$(tbPop3).find('input:eq(5)').val()+'</td><td><span class="tb_edit">编辑</span><span class="tb_remove">删除</span></td></tr>');
+            $('#tb_pop input').val('');
+            $('#tb_pop').remove();
+        });
+    });
+
+    //弹窗取消按钮
+    $('#tb_pop .tb_remove').live('click', function () {
+        $('#tb_pop').remove();
+    });
+
+    //右侧表格编辑
+    $('#tree_show table .tb_edit').live('click', function () {
+        var _this = $(this)
+        if (aTrackAct.length < 5) {
+            $('#tree_show').append(tbPop2);
+            $(tbPop2).find('input').val($(this).parent().prev().html());
+        } else {
+            $('#tree_show').append(tbPop4);
+            $(tbPop4).find('input:eq(0)').val($(this).parent().parent().find('td:eq(1)').html());
+            $(tbPop4).find('input:eq(1)').val($(this).parent().parent().find('td:eq(2)').html());
+            $(tbPop4).find('input:eq(2)').val($(this).parent().parent().find('td:eq(4)').html());
+            $(tbPop4).find('input:eq(3)').val($(this).parent().parent().find('td:eq(5)').html());
+            $(tbPop4).find('input:eq(4)').val($(this).parent().parent().find('td:eq(6)').html());
+            $(tbPop4).find('input:eq(5)').val($(this).parent().parent().find('td:eq(7)').html());
+            $(tbPop4).find('select:eq(0)').val($(this).parent().parent().find('select').val());
+        }
+
+        /*只是重设左侧
+        $(tbPop2).find('input').val($(this).parent().prev().html());
+        $(tbPop2).find('.tb_edit').click(function () {
+            $(_this).parent().prev().html($(tbPop2).find('input').val());
+            $(tbPop2).remove();
+        });*/
+
+        $(tbPop2).find('.tb_edit').unbind('click');
+        $(tbPop2).find('.tb_edit').click(function () {
+            if ($('#tree .act').length) {
+                switch (aTrackAct.length) {
+                    case 1 :
+                        //$('#tb_pop b').html('市 名称');
+                        //$('#tree>ul>li:eq('+$('#tree .act').parent().index()+')>ul>li:eq('+($(_this).parent().parent().index()-1)+')').find('span').html($(tbPop2).find('input').val());
+                        $('#tree>ul>li:eq('+aTrackAct[0]+')>ul>li:eq('+($(_this).parent().parent().index()-1)+')').find('span').html($(tbPop2).find('input').val());
+                        break;
+                    case 2 :
+                        $('#tree>ul>li:eq('+aTrackAct[0]+')>ul>li:eq('+aTrackAct[1]+')>ul>li:eq('+($(_this).parent().parent().index()-1)+')').find('span').html($(tbPop2).find('input').val());
+                        break;
+                    case 3 :
+                        $('#tree>ul>li:eq('+aTrackAct[0]+')>ul>li:eq('+aTrackAct[1]+')>ul>li:eq('+aTrackAct[2]+')>ul>li:eq('+($(_this).parent().parent().index()-1)+')').find('span').html($(tbPop2).find('input').val());
+                        break;
+                    case 4 :
+                        $('#tree>ul>li:eq('+aTrackAct[0]+')>ul>li:eq('+aTrackAct[1]+')>ul>li:eq('+aTrackAct[2]+')>ul>li:eq('+aTrackAct[3]+')>ul>li:eq('+($(_this).parent().parent().index()-1)+')').find('span').html($(tbPop2).find('input').val());
+                        break;
+                }
+            } else {
+                console.log($(this).parent().parent())
+                $('#tree>ul>li:eq('+($(_this).parent().parent().index()-1)+')').find('span').html($(tbPop2).find('input').val());
+            }
+            leftAddClass();
+        });
+
+        $(tbPop4).find('.tb_edit').unbind('click');
+        $(tbPop4).find('.tb_edit').click(function () {
+            $(_this).parent().parent().find('td:eq(1)').html($(tbPop4).find('input:eq(0)').val());
+            $(_this).parent().parent().find('td:eq(2)').html($(tbPop4).find('input:eq(1)').val());
+            $(_this).parent().parent().find('td:eq(4)').html($(tbPop4).find('input:eq(2)').val());
+            $(_this).parent().parent().find('td:eq(5)').html($(tbPop4).find('input:eq(3)').val());
+            $(_this).parent().parent().find('td:eq(6)').html($(tbPop4).find('input:eq(4)').val());
+            $(_this).parent().parent().find('td:eq(7)').html($(tbPop4).find('input:eq(5)').val());
+            $(_this).parent().parent().find('select').val($(tbPop4).find('select:eq(0)').val());
+            $(tbPop4).remove();
+        });
+    });
+
+    //右侧表格删除
+    $('#tree_show table .tb_remove').live('click', function () {
+        if (aTrackAct.length < 5) {
+            switch (aTrackAct.length) {
+                case 0 :
+                    $('#tree>ul>li:eq('+($(this).parent().parent().index()-1)+')').remove();
+                    break;
+                case 1 :
+                    $('#tree>ul>li:eq('+aTrackAct[0]+')>ul>li:eq('+($(this).parent().parent().index()-1)+')').remove();
+                    break;
+                case 2 :
+                    $('#tree>ul>li:eq('+aTrackAct[0]+')>ul>li:eq('+aTrackAct[1]+')>ul>li:eq('+($(this).parent().parent().index()-1)+')').remove();
+                    break;
+                case 3 :
+                    $('#tree>ul>li:eq('+aTrackAct[0]+')>ul>li:eq('+aTrackAct[1]+')>ul>li:eq('+aTrackAct[2]+')>ul>li:eq('+($(this).parent().parent().index()-1)+')').remove();
+                    break;
+                case 4 :
+                    $('#tree>ul>li:eq('+aTrackAct[0]+')>ul>li:eq('+aTrackAct[1]+')>ul>li:eq('+aTrackAct[2]+')>ul>li:eq('+aTrackAct[3]+')>ul>li:eq('+($(this).parent().parent().index()-1)+')').remove();
+                    break;
+            }
+            leftAddClass();
+        } else {
+            $(this).parent().parent().remove();
+            $('#tree_show table tr').each(function (index) {
+                $(this).find('td:eq(0)').html(index-1);
+            });
+        }
+    });
+
+    var tbPop = $('<div id="tb_pop"><form><b>省（直辖市） 名称</b>：<input /><p><span class="tb_edit">确 定</span><span class="tb_remove">取 消</span></p><input type="hidden" name="id" value="" /><input type="hidden" name="type" value="" /></form></div>');
+    var tbPop2 = $('<div id="tb_pop"><form><b>省（直辖市） 名称</b>：<input /><p><span class="tb_edit">确 定</span><span class="tb_remove">取 消</span></p><input type="hidden" name="id" value="" /></form></div>');
+    var tbPop3 = $('<div id="tb_pop"><form><b>姓名：</b><input /><br /><b>密码：</b><input /><br /><b>性别：</b><select><option>请选择</option><option>男</option><option>女</option></select><s style="display:inline-block;height:26px;width:5px"></s><br /><b>电话：</b><input /><br /><b>手机：</b><input /><br /><b>邮箱：</b><input /><br /><b>地址：</b><input /><br /><p><span class="tb_edit">确 定</span><span class="tb_remove">取 消</span></p><input type="hidden" name="id" value="" /></form></div>');
+    var tbPop4 = $('<div id="tb_pop"><form><b>姓名：</b><input /><br /><b>密码：</b><input /><br /><b>性别：</b><select><option>请选择</option><option>男</option><option>女</option></select><s style="display:inline-block;height:26px;width:5px"></s><br /><b>电话：</b><input /><br /><b>手机：</b><input /><br /><b>邮箱：</b><input /><br /><b>地址：</b><input /><br /><p><span class="tb_edit">确 定</span><span class="tb_remove">取 消</span></p></form></div>');
+});
+
+</script>
+</body>
+</html>

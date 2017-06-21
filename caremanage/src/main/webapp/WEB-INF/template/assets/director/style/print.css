@@ -1,0 +1,6 @@
+.commonTable{background-color:#f9f9f9;background-color:#fff;border-left:1px solid #ececec;border-top:1px solid #ececec;margin-top:25px;}
+.commonTable td,th{border-right:1px solid #ececec;border-bottom:1px solid #ececec;text-align:left;}
+.commonTable th{background-color:#def2f5;line-height:38px;height:38px;}
+.commonTable td{line-height:28px;height:28px;}
+.commonTable tr .zcontent{max-width: 200px; min-width:80px;}
+.commonTable tr .zcontents{max-width: 320px; min-width: 200px;}

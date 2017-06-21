@@ -1,0 +1,36 @@
+.n_t{position:absolute; margin-left:70px; width: 146px;padding: 0px;}
+.n_t1{position:absolute; }
+.n_tea{ z-index:10;  width: 146px;padding: 0px;}
+.n_tea  li{border: 1px solid black; width: 144px;background-color: white; padding-left: 15px; padding-bottom: 5px;padding-top: 5px;}
+.n_tea li:HOVER {
+	background-color:#41C7DB;
+}
+.div_1{border: 1px solid black;height: 20px;margin:10px;padding:0 10px 0 10px; display:inline; }
+.n_handle{margin-top: 10px;padding-bottom: 50px;width: 100%;}
+.n_teacher{ padding:20px; height:inherit;margin-bottom:10px;width: 100%;}
+.discipline{float:left;margin:50px 50px 0  0; border: 18px solid #CCCCCC; width:20%;height: 260px;padding-top: 30px;}
+.dis_a1{color: #169BD5;margin:30px 0 0 20px;}
+.dis_a2{color: #EC7C23;border-bottom: 1px solid #EC7C23;position: relative;top:10%;;z-index: 10;margin-left: 20px;}
+.dis_lale{position: relative;top:33%;margin-left: 20px;}
+.dis_lale {
+    line-height:1.4em;
+    /* 3 times the line-height to show 3 lines */
+    height:4.2em;
+    overflow:hidden;
+	cursor:pointer;
+}
+.dis_lale::after {
+    content:"...";
+    font-weight:bold;
+    position:absolute;
+    bottom:0;
+    right:0;
+    padding:0 20px 1px 45px;
+}
+.r_teacher{position: relative;left: 70%;top:-590px;width:36%; }
+.add_x{position:relative;left:38%;margin:10px;}
+.div_la{position: relative;top:-70px;}
+.addClass{height: 900px;}
+.addClass_main{/* border: 1px solid background; */ width: 350px;height:80px;margin-left: 70px;}
+
+.font_a{font-size: 22px;}

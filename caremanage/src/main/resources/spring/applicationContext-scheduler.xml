@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:s="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+	<!-- 定时获取推荐服务 -->
+	<!-- <bean id="recommendQuartzJobTask" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>
+				com.anticw.aged.service.scheduler.RecommendQuartzJobTask
+			</value>
+		</property>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="recommandService" value-ref="recommandService"/>
+			</map>
+		</property>
+		<property name="durability" value="true" />
+	</bean> -->
+	<!-- 定时计算年龄 -->
+	<bean id="userAgeQuartzJobTask" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>
+				com.anticw.aged.service.scheduler.UserAgeQuartzJobTask
+			</value>
+		</property>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="ruserService" value-ref="ruserService"/>
+			</map>
+		</property>
+		<property name="durability" value="true" />
+	</bean>
+	
+	<bean id="zSubscriberQuartzJobTask" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>
+			 com.anticw.aged.service.scheduler.ZSubscriberQuartzJobTask
+			</value>
+		</property>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="zSubscriberService" value-ref="zSubscriberService"/>
+			</map>
+		</property>
+		<property name="durability" value="true" />
+	</bean>
+	<bean id="poolQuartzJobTask" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>
+			 com.anticw.aged.service.scheduler.SpringDataPoolQuartzJobTask
+			</value>
+		</property>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="springDataPool" value-ref="springDataPool"/>
+			</map>
+		</property>
+		<property name="durability" value="true" />
+	</bean>
+	<!-- <bean id="recommendTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="recommendQuartzJobTask" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0 0/1 * * ?</value>
+		</property>
+	</bean> -->
+	<bean id="userAgeTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="userAgeQuartzJobTask" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0 1 * * ?</value>
+		</property>
+	</bean>
+	<bean id="zSubscriberTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="zSubscriberQuartzJobTask" />
+        </property>
+        <property name="cronExpression">
+            <value>0 0 1 * * ?</value>
+        </property>
+    </bean>
+	<bean id="poolTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="poolQuartzJobTask" />
+        </property>
+        <property name="cronExpression">
+            <value>0 0 1 * * ?</value>
+        </property>
+    </bean>
+	 
+    
+
+	<!-- 定时任务管理 -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<!-- <ref bean="recommendTaskTrigger" /> -->
+				<ref bean="userAgeTaskTrigger" />
+				<ref bean="zSubscriberTaskTrigger" />
+				<ref bean="poolTaskTrigger" />
+			</list>
+		</property>
+	</bean>
+	
+</beans>

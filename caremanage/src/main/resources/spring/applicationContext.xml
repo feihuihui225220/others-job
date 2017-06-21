@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:task="http://www.springframework.org/schema/task"  
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+       http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.5.xsd
+       http://www.springframework.org/schema/task  http://www.springframework.org/schema/task/spring-task-4.0.xsd">
+	
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+
+	<aop:aspectj-autoproxy />
+	
+	<!-- spring-task -->
+	<task:annotation-driven/>
+	<!-- 每天凌晨两点执行 -->
+	<!-- <task:scheduled-tasks>
+		<task:scheduled ref="policyRecommendTask" method="recommend" cron="0 0 2 * * ?"/>
+	</task:scheduled-tasks> -->
+	<!-- 每天24点执行 -->
+	<task:scheduled-tasks>
+		<task:scheduled ref="vipOrderService" method="modifyAllOrder" cron="0 0 0 * * ?"/>
+	</task:scheduled-tasks>
+	
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+
+	<context:component-scan base-package="com.anticw.aged" />
+	<context:component-scan base-package="cn.emay.sdk" />
+
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath*:config/datasource.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<mongo:mongo host="${mongodb.host}" port="${mongodb.port}">
+		<mongo:options
+			connections-per-host="${mongodb.connectionsPerHost}"
+			threads-allowed-to-block-for-connection-multiplier="${mongodb.multiplier}"
+			connect-timeout="${mongodb.timeout}"
+			max-wait-time="${mongodb.maxWaitTime}"
+			auto-connect-retry="${mongodb.autoConnectRetry}"
+			socket-keep-alive="${mongodb.socketKeepAlive}"
+			socket-timeout="${mongodb.socketTimeout}"
+			slave-ok="${mongodb.slaveOk}"
+			write-number="${mongodb.writeNumber}"
+			write-timeout="${mongodb.writeTimeout}"
+			write-fsync="${mongodb.writeFsync}" />
+	</mongo:mongo>
+	
+	<bean id="UserCredentials" class="org.springframework.data.authentication.UserCredentials">
+		<constructor-arg name="username" value="${mongodb.username}"/>
+		<constructor-arg name="password" value="${mongodb.password}" />
+	</bean>
+
+	<bean id="MongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg name="mongo" ref="mongo"/>
+		<constructor-arg name="databaseName" value="${mongodb.databaseName}" />
+		<constructor-arg name="userCredentials" ref="UserCredentials" />
+	</bean>
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass">
+			<value>${jdbc.driverClassName}</value>
+		</property>
+		<property name="jdbcUrl">
+			<value>${jdbc.url}</value>
+		</property>
+		<property name="user">
+			<value>${jdbc.username}</value>
+		</property>
+		<property name="password">
+			<value>${jdbc.password}</value>
+		</property>
+		<property name="initialPoolSize">
+			<value>${jdbc.initSize}</value>
+		</property>
+		<property name="minPoolSize">
+			<value>${jdbc.minSize}</value>
+		</property>
+		<property name="maxPoolSize">
+			<value>${jdbc.maxSize}</value>
+		</property>
+		<property name="maxIdleTime">
+			<value>${jdbc.maxIdleTime}</value>
+		</property>
+		<property name="acquireIncrement">
+			<value>${jdbc.acquireIncrement}</value>
+		</property>
+		<property name="maxStatements">
+			<value>${jdbc.maxStatements}</value>
+		</property>
+		<property name="idleConnectionTestPeriod">
+			<value>${jdbc.idleConnectionTestPeriod}</value>
+		</property>
+		<property name="acquireRetryAttempts">
+			<value>${jdbc.acquireRetryAttempts}</value>
+		</property>
+		<property name="breakAfterAcquireFailure">
+			<value>${jdbc.breakAfterAcquireFailure}</value>
+		</property>
+		<property name="testConnectionOnCheckout">
+			<value>${jdbc.testConnectionOnCheckout}</value>
+		</property>
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan">
+            <list>
+                <value>com.anticw.aged.bean</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+                <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+            </props>
+        </property>
+    </bean>
+   
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+      <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+   
+    <bean id="persistenceExceptionTranslationPostProcessor" class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+   
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="*" read-only="false" />
+        </tx:attributes>
+    </tx:advice>
+    
+    <aop:config expose-proxy="true">
+        <aop:pointcut id="txPointcut" expression="execution(* com.anticw.aged.dao..*.*(..))" />
+        <aop:advisor pointcut-ref="txPointcut" advice-ref="txAdvice"/>
+    </aop:config>
+
+	<import resource="applicationContext-scheduler.xml"/>
+	<bean id="validateCode" class="com.anticw.aged.utils.ValidateCode">
+		<property name="rdString" value="023456789abcdefghjkmnopqrstABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
+		<property name="width" value="108"/><!-- 验证码图片宽 -->
+		<property name="height" value="32"/><!-- 高 -->
+		<property name="lineSize" value="40"/><!-- 划线数 -->
+		<property name="stringNum" value="4"/><!-- 字数 -->
+		<property name="fontSize" value="25"/><!-- 字体大小 -->
+	</bean>
+	<bean id="springDataPool"  class="com.anticw.aged.pool.SpringDataPool"/>
+    <bean id="orderDao"  class="com.anticw.aged.dao.professional.service.OrderDao"/>
+    <bean id="sMSService"  class="cn.emay.sdk.service.SMSService"/>
+    <bean id="oMessageService"  class="com.anticw.aged.service.message.OMessageService"/>
+</beans>

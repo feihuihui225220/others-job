@@ -1,0 +1,3 @@
+.mainright{width:80%;margin-top:2%;}
+.mainright .calendar{width:33%;margin-left:2%;}
+.mainright .table{width:63%;margin-left:2%;}

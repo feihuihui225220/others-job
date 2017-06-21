@@ -1,0 +1,329 @@
+body, h1, h2, h3, h4, ul, ol, li, p, input, select {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font: 14px/1.5 '微软雅黑';
+	overflow-x: hidden;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: #333;
+}
+
+img {
+	border: 0;
+}
+
+/* table {
+	table-layout: fixed;
+	word-wrap: break-word;
+	border-collapse: collapse;
+}
+ */
+th, td {
+	padding: 5px;
+}
+
+.f_l {
+	float: left;
+}
+
+.f_r {
+	float: right;
+}
+
+.cl {
+	zoom: 1;
+}
+
+.cl:after {
+	content: '';
+	display: block;
+	clear: both;
+	height: 0;
+}
+
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+.clearfix {
+	display: inline-table;
+}
+
+input:focus {
+	border: 2px solid #e9c575;
+}
+
+* html .clearfix {
+	height: 1%;
+}
+
+.clearfix {
+	display: block;
+}
+/*.btn {display:block;cursor:pointer;border:0 none;width:108px;height:31px;line-height:31px;font-size:14px;text-align:center;background:url(img/btn.png) no-repeat 0 0;color:#fff;}*/
+.btn {
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	padding: 0 10px;
+}
+
+.btn:hover {
+	text-decoration: none;
+}
+
+a.btn {
+	color: #333;
+	display: inline-block;
+	zoom: 1;
+	margin: 0 10px;
+	width: 78px;
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	background: url(img/btn.png) no-repeat 0 -186px;
+	cursor: pointer;
+	border: 0 none;
+	padding: 0
+}
+
+.tb {
+	width: 98%;
+	border: 1px solid #dadada;
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+
+.tb th, .tb td {
+	background: #666;
+	color: #fff;
+	border-width: 0 1px 1px 0;
+	border-color: transparent #dadada #dadada transparent;
+	border-style: none solid solid none;
+	color: #fff;
+}
+
+.tb td {
+	background: #f4f4f4;
+	text-align: left;
+	color: #000;
+}
+
+.tb_edit, .tb_remove, .tb_remove2, #tb_pop span, .tb_btn, a.btn {
+	display: inline-block;
+	zoom: 1;
+	width: 78px;
+	height: 24px;
+	line-height: 24px;
+	text-align: center; no-repeat 0 -186px;
+	cursor: pointer;
+	border: 0 none;
+	padding: 0;
+	font-size: 12px;
+}
+
+.tb_disable {
+	color: #aaa;
+}
+
+.tb table td {
+	background: #fff;
+}
+
+.t_r {
+	text-align: right;
+}
+
+.t_l {
+	text-align: left;
+}
+
+.tb .t_r {
+	text-align: right;
+}
+
+.tb .t_l {
+	text-align: left;
+}
+
+.mgb10 {
+	margin-bottom: 10px;
+}
+
+.clearfix:after {
+	content: '.';
+	clear: both;
+	height: 0;
+	display: block;
+	visibility: hidden;
+}
+
+.clearfix {
+	display: inline-block
+}
+
+html .clearfix {
+	display: block;
+}
+
+.rel {
+	position: relative;
+}
+
+.abs {
+	position: absolute;
+}
+
+.strong {
+	font-weight: 900;
+}
+
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+/* 头部 */
+.header {
+	background-color: #43bef8;
+	overflow: hidden;
+	zoom: 1;
+	height: 80px;
+}
+/* .header .logo {float:left;height:100px; background:url(img/xiugai_02.png) no-repeat 30px 50%;padding-left:110px;font:30px/100px '\5FAE\8F6F\96C5\9ED1';width:330px;}
+ */
+.header p {
+	color: white;
+	text-align: right;
+	width: 350px;
+	float: right
+}
+
+.header p a {
+	margin-left: 15px;
+	padding-left: 15px;
+	border-left: 1px solid #DAEFF2;
+	color: #333;
+}
+
+.header li {
+	float: left;
+	padding: 0 20px;
+	margin-left: -1px;
+}
+
+.nav2 {
+	clear: both;
+	padding-left: 20px;
+	border-top: 1px solid #8f0000;
+	background: #6AD6D8;
+	height: 100px;
+	line-height: 57px;
+}
+
+.nav1 {
+	clear: both;
+	padding-left: 40px;
+	border-top: 1px solid #8f0000;
+	background: #6AD6D8;
+	height: 55px;
+	padding-top: 80px;
+}
+
+.header .last, .header li:last-child {
+	background: none;
+}
+/* .header li p {color:#fff;}*/
+.header li a {
+	color: #fff;
+}
+
+.headera {
+	font-size: 18px;
+	color: black !important;
+}
+
+.header .act a, .header li a:hover {
+	text-decoration: none;
+	color: #0000FF;
+	border-bottom: 2px solid #c3aa2c;
+}
+
+.headera:hover {
+	text-decoration: none;
+	color: #0000FF;
+	border-bottom: 2px solid #0000FF;
+}
+
+.cui_dbtn {
+	display: none !important
+}
+
+/*补充登陆注册样式*/
+.budis {
+	display: inline-block;
+}
+
+.pcenter {
+	text-align: center;
+}
+
+/*添加封面图片*/
+td img {
+	max-width: 80%;
+}
+
+/*按钮样式*/
+.button_btn {
+	height: 20px;
+	margin: 0 5px;
+	width: 72px;
+	line-height: 16px;
+	text-align: center;
+	background: url(img/xiugai_03.png) no-repeat;
+	cursor: pointer;
+	border: 0 none;
+	font-size: 12px;
+}
+
+.filedel img {
+	vertical-align: -2px;
+}
+
+.pagespan {
+	font-size: 13px;
+	text-align: right;
+	display: block;
+	padding: 10px;
+	margin-right: 125px;
+}
+
+.wb {
+	word-break: break-all;
+}
+
+.phcolor {
+	color: #999;
+}
+
+.topImg {
+	position: relative;
+	top: 20px;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+
+<link rel="stylesheet" href="../css/common.css" />
+<script src="../js/jquery-1.8.0.min.js"></script>
+<title>Home</title>
+</head>
+<body>
+
+<header class="top_header">
+    <a href="" class="set">设置</a>
+    <a href="javascript:;" class="back" onclick="window.history.back();">&lt; 返回</a>
+    确认订单
+</header>
+
+<form method="post" action="" class="order_form">
+
+<section class="sel_time">选择服务时间：
+    <select>
+    </select>
+    <select>
+        <option value="00">00分</option>
+        <option value="15">15分</option>
+        <option value="30">30分</option>
+        <option value="45">45分</option>
+    </select>
+</section>
+
+<section class="user_input">
+    <header class="ico_time">订购人信息：</header>
+    <ul>
+        <li>姓名：<input /></li>
+        <li>电话：<input /></li>
+        <li>地址：<input /></li>
+    </ul>
+</section>
+
+<section class="box">
+    <header class="ico_list">订单内容</header>
+    <ul class="list">
+        <li>宫保鸡丁<span>1份</span></li>
+        <li>宫保鸡丁<span>1份</span></li>
+        <li>宫保鸡丁<span>1份</span></li>
+        <li>宫保鸡丁<span>1份</span></li>
+    </ul>
+</section>
+
+<button type="submit" class="submit">提交订单</button>
+</form>
+
+</body>
+
+<script>
+var str = ''
+for (var i=0; i<24; i++) {
+    str+='<option>'+i+' 时</option>'
+}
+$('.sel_time select:eq(0)').html(str)
+
+</script>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/reg.css" />
+<link rel="stylesheet" href="css/shequyonghu.css" />
+<link rel="stylesheet" href="css/yonghuguanli.css" />
+<script src="js/jquery-1.8.0.min.js"></script>
+<style>
+.fix_yuan_add .fix {padding:20px 0 20px 71px;border-bottom:1px dashed #ddd;margin-bottom:20px;}
+.fix_yuan_add .admin_cate_opt {font-weight:normal;}
+.fix_yuan_add .table_col6 .col1 {width:10%;}
+.fix_yuan_add .table_col6 .col2 {width:25%;}
+.fix_yuan_add .table_col6 .col3 {width:25%;}
+.fix_yuan_add .table_col6 .col4 {width:10%;}
+.fix_yuan_add .table_col6 .col5 {width:10%;}
+.fix_yuan_add .table_col6 .col6 {width:20%;}
+.fix_yuan_add .table_col6 td {text-align:center;}
+.fix_yuan_add .table_col6 input {margin:0;vertical-align:middle;}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header">
+        <span class="logo">老年服务平台</span>
+        <p>欢迎您，社区工作者<a href="">修改密码</a><a href="">注销</a></p>
+        <ul><!-- 最后一个li 有class=act -->
+            <li class="act"><a href="">用户管理</a></li>
+            <li><a href="">CareManager管理</a></li>
+            <li><a href="">元服务管理</a></li>
+            <li><a href="">专业服务管理</a></li>
+            <li><a href="">关爱服务管理</a></li>
+            <li><a href="">评估量表管理</a></li>
+            <li><a href="">政策管理</a></li>
+            <li><a href="">设备管理</a></li>
+            <li><a href="">知识库管理</a></li>
+            <li class="last"><a href="">分类管理</a></li>
+        </ul>
+    </div>
+    <form method="post" action="" class="reg_area fix_pop" style="width:960px">
+        <h2>添加元服务</h2>
+        <div class="limitbox pad10 fix_yuan_add">
+            <div class="fix">
+                <span>名称：<input /></span>
+                <span>设备类型：
+                    <select>
+                        <option>血压计</option>
+                        <option>血压计</option>
+                        <option>血压计</option>
+                        <option>血压计</option>
+                    </select>
+                </span>
+            </div>
+            <div class="admin_cate_opt">
+                <span>数据模块名称：</span><input />
+                <button class="btn btn2" type="button">添加字段</button>
+            </div>
+            <table class="tb table_col6">
+                <col class="col1"/><col class="col2"/><col class="col3"/><col class="col4"/><col class="col5"/><col class="col6"/>
+                <tr>
+                    <th>序号</th>
+                    <th>字段名称</th>
+                    <th>字段说明</th>
+                    <th>是否显示</th>
+                    <th>是否报警</th>
+                    <th>操作</th>
+                </tr>
+            </table>
+        </div>
+        <p class="opt"><a href="" class="btn">取 消</a><button type="submit" class="btn">添 加</button></p>
+    </form>
+    <div class="footer">
+        
+    </div>
+</div>
+
+<script>
+
+$(function(){
+
+    $('.btn2').click(function () {
+        $('.table_col6').append('<tr><td>'+($('.table_col6 tr').length)+'</td><td><input /></td><td><input /></td><td><input type="checkbox" /></td><td><input type="checkbox" /></td><td><span class="tb_remove2">删除</span></td></tr>');
+        $('.table_col6 input').each(function (index, domEle) {
+            console.log($(this).parent().parent())
+            switch (index % 4) {
+                case 0 :
+                    $(this).attr('name', 'answers['+($(this).parent().parent().index()-1)+'].a');
+                    break;
+                case 1 :
+                    $(this).attr('name', 'answers['+($(this).parent().parent().index()-1)+'].b');
+                    break;
+                case 2 :
+                    $(this).attr('name', 'answers['+($(this).parent().parent().index()-1)+'].c');
+                    break;
+                case 3 :
+                    $(this).attr('name', 'answers['+($(this).parent().parent().index()-1)+'].d');
+                    break;
+            }
+        });
+    });
+
+    $('.tb_remove2').live('click', function () {
+        $(this).parent().parent().remove();
+        $('.table_col6 tr').find('td:eq(0)').each(function (index, domEle) {
+            $(domEle).html(index+1);
+        });
+        $('.table_col6 input').each(function (index, domEle) {
+            console.log($(this).parent().parent())
+            switch (index % 4) {
+                case 0 :
+                    $(this).attr('name', 'answers['+($(this).parent().parent().index()-1)+'].a');
+                    break;
+                case 1 :
+                    $(this).attr('name', 'answers['+($(this).parent().parent().index()-1)+'].b');
+                    break;
+                case 2 :
+                    $(this).attr('name', 'answers['+($(this).parent().parent().index()-1)+'].c');
+                    break;
+                case 3 :
+                    $(this).attr('name', 'answers['+($(this).parent().parent().index()-1)+'].d');
+                    break;
+            }
+        });
+    });
+
+});
+</script>
+</body>
+</html>

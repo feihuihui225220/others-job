@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<attchment>
+	
+	<att id="0" name="policy" uri="/c/policy/" />
+	<att id="1" name="notice" uri="/c/notice/{communityId}/" />
+	
+	<att id="2" name="professional.cover" uri="/p/cover/" />
+	<att id="3" name="professional.vendor.cover" uri="/p/cover/vendor/" />
+	<att id="4" name="professional.assess.cover" uri="/p/cover/assess/" />
+	
+	<att id="5" name="care.category.cover" uri="/l/cover/cat/" />
+	<att id="6" name="care.cover" uri="/l/cover/" />
+	<att id="61" name="care.cover" uri="/l/menu/" />
+	<att id="7" name="care.vendor.cover" uri="/l/cover/vendor/" />
+	
+	<att id="8" name="aged.head" uri="/a/head/{communityId}/" />
+	<att id="9" name="aged.evidence" uri="/a/evidence/{communityId}/" />
+	
+	<att id="10" name="user.head" uri="/r/head/{communityId}/"/>
+	<att id="11" name="user.cert" uri="/r/cert/{communityId}/"/>
+</attchment>

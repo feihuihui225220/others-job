@@ -1,0 +1,5 @@
+@CHARSET "UTF-8";
+.see_click_a{color: #399;font-size: 18px;float: right;margin-right: 30%; text-decoration:none;}
+a:hover {text-decoration: none;}
+ .date2{display: none;}
+ .date1{width:800px;    margin-bottom: 10%;}

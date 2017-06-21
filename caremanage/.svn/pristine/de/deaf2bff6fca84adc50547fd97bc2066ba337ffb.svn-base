@@ -1,0 +1,11 @@
+.main{width:1365px;margin:0 auto;height:587px;margin-top:7px;}
+.sidebar{width:13%;height:100%;margin:auto 13px auto 13px;border:1px solid #d2d2d2;}
+.content{width:84%;border:1px solid #d2d2d2;font-size:14px;}
+.content .search{margin-top:24px;margin-left:20px;}
+.stationSearch{width:137px;height:32px;padding:0 0 0 20px;border-radius:5px;border:1px solid #d2d2d2;}
+.search span{margin-left:30px;}
+.search input{width:155px;height:30px;border:1px solid #d2d2d2;border-radius:5px;}
+
+.button_gm{font-size:12px; background-image:url("/assets/newImg/btn.png");  width:75px;height:25px;border:0px;color:#EBF8FB}
+table tr th{text-align: center;}
+ 

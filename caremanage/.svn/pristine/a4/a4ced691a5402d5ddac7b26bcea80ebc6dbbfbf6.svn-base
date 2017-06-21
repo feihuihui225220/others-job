@@ -1,0 +1,12 @@
+.courseMain{width:810px;height:596px;margin:0 auto;border:1px solid #e0e0e0;margin-top:10px;}
+.course{width:760px;height:35px;margin:23px auto;}
+.course .input1{width:162px;height:31px;border:1px solid #d2d2d2;border-radius:5px;color:#7c7c7c;margin-left:83px;}
+.courseAdd{display:inline-block;width:116px;height:36px;line-height:36px;text-align:center;font-size:16px;color:#fff;background:url(../images/btn.png) no-repeat 0 center;}
+.confirm{display:inline-block;width:70px;height:32px;line-height:32px;background:url(../images/btnShort.png);color:#fff;font-size:16px;text-align:center;margin-left:40px; }
+.pageShow span{display:inline-block;height:32px;line-height:32px;font-size:14px;color:#373737;}
+.pageShow .list{width:45px;height:20px;border:1px solid #7a7a7a;border-radius:5px;margin:auto 8px;}
+.table{margin-left:23px;margin-right:30px;}
+table td:nth-child(4){color:#ea8f00;}
+table td:nth-child(5) a{color:#48c1fa;}
+.bottomPage {margin:20px 20px 40px auto;}
+.bottomPage span{margin:24px;}

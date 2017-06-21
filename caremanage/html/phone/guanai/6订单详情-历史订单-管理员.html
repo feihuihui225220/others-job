@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+
+<link rel="stylesheet" href="../css/common.css" />
+<script src="../js/jquery-1.8.0.min.js"></script>
+<title>Home</title>
+</head>
+<body>
+
+<header class="top_header">
+    <a href="" class="set">设置</a>
+    <a href="javascript:;" class="back" onclick="window.history.back();">&lt; 返回</a>
+    订单详情
+</header>
+
+<form action="" class="fix_guanai_0 con">
+
+<section class="order_meta fix_guanai_2">
+    <p>订单编号：1231023819381</p>
+    <p>订单金额：1231</p>
+    <p>订单时间：2014-10-13 14:47</p>
+    <p>订单状态：已完成</p>
+</section>
+
+<section class="box">
+    <header class="ico_list">订单内容：</header>
+    <ul class="list">
+        <li>菜品名字<span>1份</span></li>
+        <li>菜品名字<span>1份</span></li>
+        <li>菜品名字<span>1份</span></li>
+        <li>一二三四五六七八九十<span>999份</span></li>
+        <li>菜品名字<span>1份</span></li>
+    </ul>
+</section>
+
+<section class="box">
+    <header class="ico_user">订购人信息：</header>
+    <ul class="list">
+        <li>姓名：张三</li>
+        <li>电话：138111111</li>
+        <li>地址：北京市朝阳区</li>
+    </ul>
+</section>
+
+<section class="box">
+    <header class="ico_time">服务时间：</header>
+    <ul class="list">
+        <li>2014-10-13 23:25</li>
+    </ul>
+</section>
+
+<section class="box fix_guanai_3">
+    <header class="ico_user">分配人员：</header>
+    <ul class="list">
+        <li>姓名：张三</li>
+    </ul>
+</section>
+
+
+<button type="button" class="submit">确定分配</button>
+</form>
+
+
+<script>
+var orderId = '';
+$.ajax({
+    url:       'http://10.1.11.195:800/laonian/6.php',
+    dataType:   'jsonp',
+    jsonp:      'callback',
+    success:    function (json) {
+        $('.order_meta').html('');
+        $('ul.list').html('');
+        if (json.code == 0) {
+            console.log(json.data.length);
+            orderId = json.data[0].id;
+            $(json.data).each(function () {
+                $('.order_meta').append(
+                    '<p>订单编号：'+$(this)[0].id+'</p>'+
+                    '<p>订单金额：'+$(this)[0].price+'</p>'+
+                    '<p>订单时间：'+$(this)[0].time+'</p>'+
+                    '<p>订单状态：'+$(this)[0].status+'</p>'+
+                    '</a>'
+                );
+                $('.box:eq(1) ul').append(
+                    '<li>姓名：'+$(this)[0].name+'</li>'+
+                    '<li>电话：'+$(this)[0].tel+'</li>'+
+                    '<li>地址：'+$(this)[0].address+'</li>'
+                );
+                $('.box:eq(2) ul').append(
+                    '<li>'+$(this)[0].stime+'</li>'
+                );
+                 $('.box:eq(3) ul').append(
+                    '<li>'+json.data[0].server+'</li>'
+                )
+            });
+            for (var i=0; i<json.data[0].order.length; i++) {
+                $('.box:eq(0) ul').append(
+                    '<li>'+json.data[0].order[i].name+'<span>'+json.data[0].order[i].num+'份</span></li>'
+                )
+            }
+
+        }
+    }
+});
+
+</script>
+</body>
+</html>

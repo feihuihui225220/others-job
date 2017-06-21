@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>老年人前端_订购服务</title>
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/shequyonghu.css" />
+<script src="js/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header">
+        <span class="logo">老年服务平台</span>
+        <p>欢迎您，社区工作者<a href="">修改密码</a><a href="">注销</a></p>
+        <ul><!-- 最后一个li 有class=act -->
+            <li><a href="">我的信息</a></li>
+            <li><a href="">我的服务</a></li>
+            <li><a href="">我的计划</a></li>
+            <li><a href="">实时消息</a></li>
+            <li><a href="">警报信息</a></li>
+			<li><a href="">公告政策</a></li>
+			<li class="act"><a href="">我的订单</a></li>
+            <li class="last"><a href="">知识库</a></li>
+        </ul>
+    </div>
+    <div class="body bodyline pad10">
+        <div class="usertitle strong clearfix"><div class="f_r fr_itbn"><button class="pad5 addContact">返回</button></div>菜单</div>
+        <div class="rightbtn pad10"></div>
+        <div class="usedetail clearfix">
+			<div class="ggtext">
+				<div class="dc_l">
+					<ul>
+						<li><p>宫保鸡丁1</p><span>15.00元</span></li>
+						<li><p>宫保鸡丁2</p><span>15.00元</span></li>
+						<li><p>宫保鸡丁3</p><span>15.00元</span></li>
+						<li><p>宫保鸡丁4</p><span>15.00元</span></li>
+						<li><p>宫保鸡丁5</p><span>15.00元</span></li>
+						<li><p>宫保鸡丁6</p><span>15.00元</span></li>
+						<li><p>宫保鸡丁7</p><span>15.00元</span></li>
+						<li><p>宫保鸡丁8</p><span>15.00元</span></li>
+					</ul>
+				</div>
+				<div class="dc_r">
+					<ul>
+						<li><p>宫保鸡丁</p><div class="com"><i>- </i><input value="0" /><b>+</b></div><a href="javascript:;">X</a><span>15.00元</span></li>
+						<li><p>宫保鸡丁</p><div class="com"><i>- </i><input value="0" /><b>+</b></div><a href="javascript:;">X</a><span>325.00元</span></li>
+						<li><p>宫保鸡丁</p><div class="com"><i>- </i><input value="0" /><b>+</b></div><a href="javascript:;">X</a><span>12.00元</span></li>
+						<li><p>宫保鸡丁</p><div class="com"><i>- </i><input value="0" /><b>+</b></div><a href="javascript:;">X</a><span>14.00元</span></li>
+						<li><p>宫保鸡丁</p><div class="com"><i>- </i><input value="0" /><b>+</b></div><a href="javascript:;">X</a><span>715.50元</span></li>
+					</ul>
+					<div class="dc_r_xd">
+						<div class="dc_r_xd_u">
+							<p class="xdp">合计：￥<span class="jswz">0</span></p>
+							<a class="jsdd" href="javascript:;">结算</a>
+						</div>
+						<div class="dc_r_xd_d">
+							<div class="dianhuahaoma">
+								<p class="f_l">服务电话：</p>
+								<span>010-61111111</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+    <div class="footer"></div>
+    <form class="total hide" method="pos" action="" id="total_form">
+        <style>
+        .total {padding:20px 20px 80px;}
+        .total div {padding:10px;border:1px solid #ddd;margin-bottom:20px;width:538px;}
+        .total h4 {margin-bottom:15px;font-size:14px;}
+        .total p {overflow:hidden;zoom:1;margin-bottom:10px;}
+        .total label {float:left;width:80px;text-align:right;}
+        .opt .btn {float:right;}
+        .opt .timedate {width:108px;padding:0 2px 0 5px;}
+        </style>
+        <div>
+            <h4>联系方式</h4>
+            <p><label>联系人：</label><input /></p>
+            <p><label>联系电话：</label><input /></p>
+            <p><label>联系地址：</label><input style="width:400px" /></p>
+        </div>
+        <div>
+            <h4>订单详情</h4>
+            <table class="table100 usertable cen">
+                <col class="col1"/><col class="col2"/><col class="col3"/>
+                <tr>
+                    <th>名称</th>
+                    <th>数量</th>
+                    <th>价格</th>
+                </tr>
+            </table>
+        </div>
+        <p class="opt"><span>服务时间： <input class="timedate" /> 注：默认下单半小时后</span><a href="" class="btn">取 消</a><button type="submit" class="btn">确定提交</button></p>
+    </form>
+</div>
+<script type="text/javascript" src="js/layer.min.js"></script>
+<script type="text/javascript" src="js/lhgcalendar.min.js"></script>
+
+<script>
+
+$(function(){
+    $('.dc_r .com input').live('change', function () {
+        if (isNaN($(this).val())) {
+            alert('请输入正确数值');
+        }
+    });
+
+    setInterval(function () {
+        var total = 0;
+        $('.dc_r .com input').each(function () {
+            total+=$(this).val()*parseFloat($(this).parent().next().next().html());
+        });
+        $('.jswz').html(total.toFixed(2));
+    }, 100);
+
+    $('.com i').live('click', function () {
+        if ($(this).next().val() == 0) {
+            return;
+        } else {
+            $(this).next().val($(this).next().val()-1);
+        }
+    });
+
+    $('.com b').live('click', function () {
+        $(this).prev().val($(this).prev().val()*1+1);
+    });
+
+    $('.dc_r li a').live('click', function () {
+        $('.dc_l ul').append($(this).parent());
+        $(this).parent().find('div').remove();
+        $(this).parent().find('a').remove();
+    });
+
+    $('.dc_l li').live('click', function () {
+        var ele = $('<div class="com"><i>- </i><input value="0" /><b>+</b></div><a href="javascript:;">X</a>');
+        $(this).find('p').after(ele);
+        $('.dc_r ul').append($(this));
+    });
+
+    $('.dc_r .jsdd').on('click', function(){
+        $('.timedate').calendar({ format:'yyyy-MM-dd HH:mm', zIndex:222222222});
+        $('.table100').html('<col class="col1"/><col class="col2"/><col class="col3"/><tr><th>名称</th><th>数量</th><th>价格</th></tr>');
+        $('.dc_r').find('li').each(function (index, domEle) {
+            $('.table100').append('<tr><td>'+$(this).find('p').html()+'</td><td>'+$(this).find('input').val()+'</td><td>'+$(this).find('span').html()+'</td></tr>')
+        });
+
+        $.layer({
+            type : 1,
+            title : '订单详情',
+            offset:['150px' , ''],
+            border : false,
+            shadeClose:true,
+            fadeIn: 300,
+            btns: 2,
+            btn: ['保存', '取消'],
+            yes:function(index){
+                document.getElementById('total_form').submit();
+            },
+            area : ['600px','auto'],
+            page : {dom : '.total'}
+        });
+    });
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/reg.css" />
+<link rel="stylesheet" href="css/shequyonghu.css" />
+<link rel="stylesheet" href="css/yonghuguanli.css" />
+<script src="js/jquery-1.8.0.min.js"></script>
+<style>
+.tb td {text-align:left;padding:10px;vertical-align:middle;}
+.tb td input {vertical-align:middle;margin:0;}
+.tb .t_r {text-align:right;}
+.limitbox3 .fix_ser .col1 {width:15%;}
+.limitbox3 .fix_ser .col2 {width:30%;}
+.limitbox3 .fix_ser .col3 {width:15%;}
+.limitbox3 .fix_ser .col4 {width:30%;}
+.tb table td, .tb table th {text-align:center;}
+.tb table .col11 {width:5%;}
+.tb table .col22 {width:35%;}
+.tb table .col33 {width:60%;}
+.tb label {display:inline-block;*display:inline;zoom:1;width:150px;margin-right:15px;line-height:2;}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header">
+        <span class="logo">老年服务平台</span>
+        <p>欢迎您，社区工作者<a href="">修改密码</a><a href="">注销</a></p>
+        <ul><!-- 最后一个li 有class=act -->
+            <li class="act"><a href="">用户管理</a></li>
+            <li><a href="">CareManager管理</a></li>
+            <li><a href="">元服务管理</a></li>
+            <li><a href="">专业服务管理</a></li>
+            <li><a href="">关爱服务管理</a></li>
+            <li><a href="">评估量表管理</a></li>
+            <li><a href="">政策管理</a></li>
+            <li><a href="">设备管理</a></li>
+            <li><a href="">知识库管理</a></li>
+            <li class="last"><a href="">分类管理</a></li>
+        </ul>
+    </div>
+    <form method="post" action="" class="reg_area fix_pop" style="width:900px">
+        <h2>添加服务</h2>   
+        <div class="limitbox limitbox3 pad10 ">
+            <table class="tb table_col4 fix_ser">
+                <col class="col1"/><col class="col2"/><col class="col3"/><col class="col4"/>
+                <tr>
+                    <td class="t_r">名称：</td>
+                    <td><input /></td>
+                    <td class="t_r">关爱服务资质：</td>
+                    <td><input value="注：不参与运算，手输即可"/></td>
+                </tr>
+                <tr>
+                    <td class="t_r">封面：</td>
+                    <td><input type="file" /></td>
+                    <td class="t_r">服务分类：</td>
+                    <td>
+                        <select>
+                            <option>1</option>
+                            <option>2</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="t_r">服务内容：</td>
+                    <td><textarea cols="34" rows="5"></textarea></td>
+                    <td class="t_r">质量标准：</td>
+                    <td><textarea cols="34" rows="5"></textarea></td>
+                </tr>
+            </table>
+        </div>
+        <p class="opt"><a href="" class="btn">取 消</a><button type="submit" class="btn">添 加</button></p>
+    </form>
+    <div class="footer">
+        
+    </div>
+    <script>
+    
+    
+    
+    </script>
+</div>
+
+</body>
+</html>

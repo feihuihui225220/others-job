@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>CallCenter事务办理</title>
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/shequyonghu.css" />
+<script src="js/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header">
+        <span class="logo">老年服务平台</span>
+        <p>欢迎您，社区工作者<a href="">修改密码</a><a href="">注销</a></p>
+        <ul><!-- 最后一个li 有class=act -->
+            <li class="act"><a href="">事务办理</a></li>
+            <li><a href="">订单管理</a></li>
+            <li><a href="">投诉管理</a></li>
+            <li><a href="">用户管理</a></li>
+            <li><a href="">角色管理</a></li>
+            <li class="last"><a href="">权限管理</a></li>
+        </ul>
+    </div>
+    <div class="body bodyline pad10">
+        <div class="usedetail clearfix">
+            <div class="f_l left pad10">
+                <div class="usertitle mgb10 strong clearfix">
+					<ul class="inpubox2 clearfix">
+						<li class="inpubox2_li"><p>姓名：</p><span>张三</span></li>
+						<li class="inpubox2_li"><p>身份证号：</p><span>11022319876678123</span></li>
+						<li class="inpubox2_li"><p>联系电话：</p><span>13800138000</span></li>
+						<li class="inpubox2_li"><p>家庭住址：</p><span>北京市朝阳区东三环北路</span></li>
+					</ul>
+				</div>
+                <div class="tablebox">
+                    <div class="ggfwzyfw">
+						<div class="ggfw">
+							<a href="#"><input class="tablebox_button" type="button" value="公共服务"></a>
+						</div>
+						<div class="zyfw">
+							<a href="#"><input class="tablebox_button" type="button" value="专业服务"></a>
+						</div>
+					</div>
+					<div class="gafwtsfw">
+						<div class="gafw">
+							<a href="#"><input class="tablebox_button" type="button" value="关爱服务"></a>
+						</div>
+						<div class="tsfw">
+							<a href="#"><input class="tablebox_button" type="button" value="投诉"></a>
+						</div>
+					</div>
+                </div>
+            </div>
+            <div class="f_l pad10 table47">
+                <div class="usertitle mgb10 strong clearfix"><div class="f_r fr_itbn mgb5">&nbsp;</div>权限点</div>
+                <ul class="inpubox clearfix">
+					<li><input style="width:240px; padding:5px;" class="text150" type="text" value="请输入姓名或身份证号"></li>
+					<li><input style="width:100px;" class="pad5 ibtn" type="button" value="搜索"></li>
+				</ul>
+                <div class="tablebox">
+                    <table class="table100 usertable cen">
+                        <tr><th>姓名</th><th>身份证号</th></tr>
+                        <tr class="limitid_1"><td>张三</td><td>110223198766787778</td></tr>
+                        <tr class="limitid_2"><td>李四</td><td>110223198766787778</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer"></div>
+</div>
+<div class="limitbox pad10 hide">
+    <ul class="inpubox clearfix">
+        <li><label>角色名称：</label><input class="text150" type="text" /></li>
+        <li><label>描述：</label><textarea name="" id="" cols="30" rows="6"></textarea></li>
+    </ul>
+</div>
+<script type="text/javascript" src="js/layer.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $(".addulimit").click(function(){
+        $.layer({
+            type : 1,
+            title : '添加角色',
+            offset:['150px' , ''],
+            border : false,
+            shadeClose:true,
+            fadeIn: 300,
+            btns: 2,
+            btn: ['保存', '取消'],
+            yes:function(index){
+                console.log("保存",index);
+                layer.close(index);
+            },
+            area : ['450px','270px'],
+            page : {dom : '.limitbox'}
+        });
+    });
+    $(".editulimit").click(function(){
+        var limitid = $(this).attr("limitid");
+        console.log('编辑id'+limitid);
+        $.layer({
+            type : 1,
+            title : '编辑角色',
+            offset:['150px' , ''],
+            border : false,
+            shadeClose:true,
+            fadeIn: 300,
+            btns: 2,
+            btn: ['保存', '取消'],
+            yes:function(index){
+                console.log("保存",index);
+                layer.close(index);
+            },
+            area : ['450px','270px'],
+            page : {dom : '.limitbox'}
+        });
+    });
+    $(".delulimit").click(function(){
+        var limitid = $(this).attr("limitid");
+        layer.confirm('是否确定删除该角色?', function(index){
+            $('.limitid_'+limitid).remove();
+            layer.close(index);
+        }, function(index){
+            console.log(index);
+        });
+    });
+});
+</script>
+</body>
+</html>

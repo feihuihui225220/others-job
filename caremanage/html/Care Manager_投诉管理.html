@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Care Manager_投诉管理</title>
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/shequyonghu.css" />
+<link rel="stylesheet" href="css/yonghuguanli.css" />
+<script src="js/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header">
+        <span class="logo">老年服务平台</span>
+        <p>欢迎您，社区工作者<a href="">修改密码</a><a href="">注销</a></p>
+        <ul><!-- 最后一个li 有class=act -->
+			<li><a href="">人员管理</a></li>
+            <li><a href="">服务推荐</a></li>
+            <li><a href="">警报管理</a></li>
+            <li class="act"><a href="">投诉管理</a></li>
+            <li><a href="">订单管理</a></li>
+			<li><a href="">服务商管理</a></li>
+			<li><a href="">责任管理</a></li>
+			<li><a href="">设备管理</a></li>
+			<li><a href="">用户管理</a></li>
+			<li><a href="">角色管理</a></li>
+            <li class="last"><a href="">权限管理</a></li>
+        </ul>
+    </div>
+    <div class="body bodyline pad10">
+        <div class="usedetail clearfix">
+            <div class="searchli">
+				<ul class="inpubox clearfix">
+					<li><label>姓名：</label><input class="text150" type="text" /></li>
+					<li><label>身份证号：</label><input class="text150" type="text" /></li>
+					<li><label>订单号：</label><input class="text150" type="text" /></li>
+					<li><label>状态：</label><select class="select160" name="" id=""><option value="0">全部</option><option value="1">新投诉</option><option value="2">已处理</option><option value="3">已回访</option></select></li>
+					<li><label>日期：</label><input class="text150 timedate" type="text" /> 至 <input class="text150 timedate" type="text" /></li>
+					<li><input class="pad5 ibtn" type="button" value="搜索"></li>
+					<li><input class="pad5 ibtn" type="button" value="添加投诉"></li>
+				</ul>
+			</div>
+			<table class="table100 usertable cen">
+                <tr><th>姓名</th><th>身份证号</th><th>联系方式</th><th>订单号</th><th>服务类型</th><th>投诉时间</th><th>状态</th><th>操作</th></tr>
+                <tr><td>张三</td><td>110223987666789</td><td>13800138000</td><td>13233232</td><td>关爱服务</td><td>2014-1-1 11:22:32</td><td>新投诉</td><td><span class="tb_edit">处 理</span></td></tr>
+                <tr><td>张三</td><td>110223987666789</td><td>13800138000</td><td>13233232</td><td>专业服务</td><td>2014-1-1 11:22:32</td><td>已处理</td><td><span class="tb_edit">查 看</span></td></tr>
+				<tr><td>张三</td><td>110223987666789</td><td>13800138000</td><td>13233232</td><td>专业服务</td><td>2014-1-1 11:22:32</td><td>已处理</td><td><span class="tb_edit">回 访</span></td></tr>
+            </table>
+        </div>
+    </div>
+    <div class="footer"></div>
+</div>
+<div class="limitbox pad10 hide">
+    <ul class="inpubox clearfix">
+        <li><label>角色名称：</label><input class="text150" type="text" /></li>
+        <li><label>描述：</label><textarea name="" id="" cols="30" rows="6"></textarea></li>
+    </ul>
+</div>
+<script type="text/javascript" src="js/layer.min.js"></script>
+<script type="text/javascript" src="js/lhgcalendar.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $(".addulimit").click(function(){
+        $.layer({
+            type : 1,
+            title : '添加角色',
+            offset:['150px' , ''],
+            border : false,
+            shadeClose:true,
+            fadeIn: 300,
+            btns: 2,
+            btn: ['保存', '取消'],
+            yes:function(index){
+                console.log("保存",index);
+                layer.close(index);
+            },
+            area : ['450px','270px'],
+            page : {dom : '.limitbox'}
+        });
+    });
+    $(".editulimit").click(function(){
+        var limitid = $(this).attr("limitid");
+        console.log('编辑id'+limitid);
+        $.layer({
+            type : 1,
+            title : '编辑角色',
+            offset:['150px' , ''],
+            border : false,
+            shadeClose:true,
+            fadeIn: 300,
+            btns: 2,
+            btn: ['保存', '取消'],
+            yes:function(index){
+                console.log("保存",index);
+                layer.close(index);
+            },
+            area : ['450px','270px'],
+            page : {dom : '.limitbox'}
+        });
+    });
+    $(".delulimit").click(function(){
+        var limitid = $(this).attr("limitid");
+        layer.confirm('是否确定删除该角色?', function(index){
+            $('.limitid_'+limitid).remove();
+            layer.close(index);
+        }, function(index){
+            console.log(index);
+        });
+    });
+	$(".timedate").calendar({ format:'yyyy-MM-dd' });
+});
+</script>
+</body>
+</html>

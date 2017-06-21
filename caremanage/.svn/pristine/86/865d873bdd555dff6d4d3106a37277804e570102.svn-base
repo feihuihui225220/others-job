@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="css/shequyonghu.css" />
+		<link rel="stylesheet" href="css/yonghuguanli.css" />
+		<script src="js/jquery-1.8.0.min.js"></script>
+	</head>
+	
+	<body>
+		<div class="wrapper">
+			<div class="body">
+				<div class="useractbox bodyline pad10 vv">
+					<ul class="ooootitle strong mgb10">
+						<li id="1" class="rel on">历史数据</li>
+						<li id="2" class="rel">服务计划</li>
+						<li id="3" class="rel">评估</li>
+						<li id="4" class="rel">服务报告</li>
+						<li id="5" class="rel">实时消息</li>
+						<li id="6" class="rel">警报阀值</li>
+						<li class="close_rel">返回</li>
+					</ul>
+	
+					<div class="oooolist">
+						<iframe id="hjah" src="abc_history.html" scrolling="yes" width="100%" height="100%" frameborder="0"></iframe>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	
+		<script type="text/javascript">
+			$(function() {
+				$(".ooootitle li").click(function() {
+					var index = $(this).attr('id');
+					$(this).addClass('on').siblings().removeClass('on');
+					//$(".oooolist .oooo" + index).show().siblings().hide();
+					if(index == 1) {
+						$(".oooolist iframe").attr("src", "abc_history.html");
+					}else if(index == 2) {
+						$(".oooolist iframe").attr("src", "abc_servicePlan.html");
+					}else if(index == 3) {
+						$(".oooolist iframe").attr("src", "abc_assess.html");
+					}else if(index == 4) {
+						$(".oooolist iframe").attr("src", "abc_report.html");
+					}else if(index == 5) {
+						$(".oooolist iframe").attr("src", "abc_realmsg.html");
+					}else if(index == 6) {
+						$(".oooolist iframe").attr("src", "abc_alarm.html");
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

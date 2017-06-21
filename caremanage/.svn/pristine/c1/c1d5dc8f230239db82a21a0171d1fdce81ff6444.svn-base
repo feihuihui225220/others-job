@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/shequyonghu.css" />
+<link rel="stylesheet" href="css/yonghuguanli.css" />
+<script src="js/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header">
+        <span class="logo">老年服务平台</span>
+        <p>欢迎您，社区工作者<a href="">修改密码</a><a href="">注销</a></p>
+        <ul><!-- 最后一个li 有class=act -->
+            <li class="act"><a href="">用户管理</a></li>
+            <li><a href="">CareManager管理</a></li>
+            <li><a href="">元服务管理</a></li>
+            <li><a href="">专业服务管理</a></li>
+            <li><a href="">关爱服务管理</a></li>
+            <li><a href="">评估量表管理</a></li>
+            <li><a href="">政策管理</a></li>
+            <li><a href="">设备管理</a></li>
+            <li><a href="">知识库管理</a></li>
+            <li class="last"><a href="">分类管理</a></li>
+        </ul>
+    </div>
+    <div class="body">
+        <div class="box_padding">
+            <div class="admin_cate_opt">
+                <a class="btn" href="返回">返 回</a>
+                <button class="btn">增加试题</button>
+            </div>
+
+            <table class="tb table_col3">
+                <col class="col1"/><col class="col2"/><col class="col3"/>
+                <tr>
+                    <th>序号</th>
+                    <th>试题内容</th>
+                    <th>操作</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="footer"></div>
+</div>
+<div class="limitbox limitbox3 pad10 hide">
+    <ul class="inpubox clearfix">
+        <li><label>试题内容：</label><textarea cols="90" rows="5"></textarea></li>
+        <li><label>图片上传：</label>
+            <span class="file_name"></span>&emsp;<input type="file" />
+        </li>
+    </ul>
+    <div class="admin_cate_opt">
+        <button class="btn btn2">增加选项</button>
+    </div>
+    <table class="tb table_col4">
+        <col class="col1"/><col class="col2"/><col class="col3"/><col class="col4"/>
+        <tr>
+            <th>序号</th>
+            <th>选项内容</th>
+            <th>选项分数</th>
+            <th>操作</th>
+        </tr>
+    </table>
+
+</div>
+<script type="text/javascript" src="js/layer.min.js"></script>
+<script type="text/javascript">
+$(function(){
+
+    $('.box_padding>.admin_cate_opt>.btn').click(function () {
+        $('.limitbox input').val('');
+        $('.limitbox textarea').val('');
+        $('.limitbox .file_name').html('');
+        $.layer({
+            type : 1,
+            title : '添加分类',
+            offset:['150px' , ''],
+            border : false,
+            shadeClose:true,
+            fadeIn: 300,
+            btns: 2,
+            btn: ['确定', '取消'],
+            yes:function(index){
+                console.log("保存",index);
+                //$('.table_col3').append('<tr><td class="get_table">'+($('.table_col3 tr').length)+'</td><td class="get_file">'+$('.limitbox textarea').val()+'</td><td><span class="tb_edit">编 辑</span><span class="tb_remove">删 除</span><td></tr>')
+                layer.close(index);
+                //$('.get_file').attr('data-name', $('input[type="file"]').val().match(/[^\\]*$/)[0]);
+
+                //todo alert($('.table_col4').get().outerHTML())
+                //$('.get_table').attr('data-table', $('.table_col4').get(0).outerHTML);
+            },
+            area : ['800px','600px'],
+            page : {dom : '.limitbox'}
+        });
+    });
+/*
+    $('.tb_edit').live('click', function () {
+        var _this = $(this)
+        $('.limitbox textarea').val($(this).parent().prev().html());
+        $('.get_file').attr('data-name', $('input[type="file"]').val().match(/[^\\]*$/)[0]);
+        $('.limitbox input[type="file"]').val('');
+        $('.limitbox .file_name').html($(this).parent().prev().attr('data-name'));
+        $.layer({
+            type : 1,
+            title : '编辑',
+            offset:['150px' , ''],
+            border : false,
+            shadeClose:true,
+            fadeIn: 300,
+            btns: 2,
+            btn: ['保存', '取消'],
+            yes:function(index){
+                console.log("保存",index);
+                $(_this).parent().prev().html($('.limitbox textarea').val());
+                layer.close(index);
+            },
+            area : ['800px','600px'],
+            page : {dom : '.limitbox'}
+        });
+    });
+
+    $('.limitbox input[type="file"]').change(function () {
+        $('.limitbox .file_name').html('');
+    });
+
+    $('.tb_remove').live('click', function () {
+        var _this = $(this)
+        $.layer({
+            shade: [0],
+            area: ['auto','auto'],
+            dialog: {
+                msg: '确定要删除吗？',
+                btns: 2,
+                type: 4,
+                btn: ['删除','取消'],
+                yes: function(){
+                    $(_this).parent().parent().remove();
+                    layer.msg('删除', 1, 1);
+                }, no: function(){
+                    //layer.msg('取消', 1, 13);
+                }
+            }
+        });
+    });
+*/
+
+    $('.btn2').click(function () {
+        $('.table_col4').append('<tr><td>'+'ABCDEFG'.charAt($('.table_col4 tr').length-1)+'</td><td><input /></td><td><input /></td><td><span class="tb_remove2">删除</span><input type="hidden"/></td></tr>');
+                $('.table_col4 input').each(function (index, domEle) {
+                    console.log($(this).parent().parent())
+                    switch (index % 3) {
+                        case 0 :
+                            $(this).attr('name', 'answers['+($(this).parent().parent().index()-1)+'].score');
+                            break;
+                        case 1 :
+                            $(this).attr('name', 'answers['+($(this).parent().parent().index()-1)+'].content');
+                            break;
+                        case 2 :
+                            $(this).attr('name', 'answers['+($(this).parent().parent().index()-1)+'].code');
+                            $(this).attr('value', $(this).parent().parent().find('td:eq(0)').html());
+                            break;
+                    }
+                });
+    });
+
+    $('.table_col4 input').live('change', function () {
+        $(this).attr('value', $(this).val());
+    });
+
+    $('.tb_remove2').live('click', function () {
+        $(this).parent().parent().remove();
+        $('.table_col4 tr').find('td:eq(0)').each(function (index, domEle) {
+            $(domEle).html('ABCDEFG'.charAt(index));
+        });
+        $('.table_col4 input').each(function (index, domEle) {
+            switch (index % 3) {
+                case 0 :
+                    $(this).attr('name', 'answers['+($(this).parent().parent().index()-1)+'].score');
+                    break;
+                case 1 :
+                    $(this).attr('name', 'answers['+($(this).parent().parent().index()-1)+'].content');
+                    break;
+                case 2 :
+                    $(this).attr('name', 'answers['+($(this).parent().parent().index()-1)+'].code');
+                    $(this).attr('value', $(this).parent().parent().find('td:eq(0)').html());
+                    break;
+            }
+        });
+    });
+
+});
+</script>
+</body>
+</html>

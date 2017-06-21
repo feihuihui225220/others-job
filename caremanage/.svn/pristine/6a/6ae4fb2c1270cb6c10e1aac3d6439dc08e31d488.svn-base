@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/reg.css" />
+<link rel="stylesheet" href="css/shequyonghu.css" />
+<link rel="stylesheet" href="css/yonghuguanli.css" />
+<script src="js/jquery-1.8.0.min.js"></script>
+<style>
+.fix_detail ul label {width:6em;}
+.fix_detail .inpubox li {width:300px;float:left;}
+.fix_detail .inpubox .w520 {clear:both;width:auto;}
+.fix_detail .inpubox .w520 label {width:7em;}
+.fix_detail .inpubox .w520 .tit {width:6em;}
+.fix_detail .inpubox .w520 input {vertical-align:text-bottom;}
+.fix_detail .inpubox .w520 div {margin-left:7em;margin-top:-39px;}
+.fix_detail .inpubox .w520 .fix_len {width:auto;}
+.fix_detail .inpubox .auto {width:auto;}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header">
+        <span class="logo">老年服务平台</span>
+        <p>欢迎您，社区工作者<a href="">修改密码</a><a href="">注销</a></p>
+        <ul><!-- 最后一个li 有class=act -->
+            <li class="act"><a href="">用户管理</a></li>
+            <li><a href="">CareManager管理</a></li>
+            <li><a href="">元服务管理</a></li>
+            <li><a href="">专业服务管理</a></li>
+            <li><a href="">关爱服务管理</a></li>
+            <li><a href="">评估量表管理</a></li>
+            <li><a href="">政策管理</a></li>
+            <li><a href="">设备管理</a></li>
+            <li><a href="">知识库管理</a></li>
+            <li class="last"><a href="">分类管理</a></li>
+        </ul>
+    </div>
+    <div class="reg_area fix_pop fix_detail" style="width:800px">
+        <h2>服务商类别：
+            <select>
+                <option value="0">专业服务</option>
+                <option value="1">关爱与便利性服务</option>
+            </select>
+        </h2>   
+        <form method="post" action="" class="limitbox pad10">
+            <ul class="inpubox clearfix ">
+                <li><label>服务商名称：</label><input /></li>
+                <li><label>联系电话：</label><input /></li>
+                <li><label>管理员：</label><input /></li>
+                <li><label>联系地址：</label><input /></li>
+                <li><label>密码：</label><input /></li>
+                <li class="w520"><label class="tit">查看权限：</label>
+                    <div>
+                        <label>基础信息 <input type="checkbox" value="" /></label>
+                        <label>特征信息 <input type="checkbox" value="" /></label>
+                        <label>证据信息 <input type="checkbox" value="" /></label>
+                        <label>订单信息 <input type="checkbox" value="" /></label>
+                        <label>办事信息 <input type="checkbox" value="" /></label>
+                        <label>评估信息 <input type="checkbox" value="" /></label>
+                        <label>状态信息 <input type="checkbox" value="" /></label>
+                        <label>警报信息 <input type="checkbox" value="" /></label>
+                        <label>计划信息 <input type="checkbox" value="" /></label>
+                        <label class="fix_len">联系人信息 <input type="checkbox" value="" /></label>
+                        <label class="fix_len">专业服务信息 <input type="checkbox" value="" /></label>
+                    </div>
+                </li>
+                <li class="w520"><label class="tit">准入资质：</label>
+                    <label>心律检测 <input type="checkbox" value="" /></label>
+                    <label>睡眠监测 <input type="checkbox" value="" /></label>
+                    <label>证据信息 <input type="checkbox" value="" /></label>
+                    <label>证据信息 <input type="checkbox" value="" /></label>
+                </li>
+                <li class="w520"><label>服务商简介：</label>
+                    <textarea cols="72" rows="8"></textarea>
+                </li>
+            </ul>
+        </form>
+        <form method="post" action="" class="limitbox pad10 hide">
+            <ul class="inpubox clearfix ">
+                <li><label>服务商名称：</label><input /></li>
+                <li><label>联系电话：</label><input /></li>
+                <li><label>管理员：</label><input /></li>
+                <li><label>联系地址：</label><input /></li>
+                <li><label>密码：</label><input /></li>
+                <li class="auto"><label>封面：</label><input type="file" /></li>
+                <li class="w520"><label class="tit">准入资质：</label>
+                    <label>心律检测 <input type="checkbox" value="" /></label>
+                    <label>睡眠监测 <input type="checkbox" value="" /></label>
+                    <label>证据信息 <input type="checkbox" value="" /></label>
+                    <label>证据信息 <input type="checkbox" value="" /></label>
+                </li>
+                <li class="w520"><label>服务商简介：</label>
+                    <textarea cols="72" rows="8"></textarea>
+                </li>
+            </ul>
+        </form>
+        <p class="opt"><a href="" class="btn">取 消</a><button type="submit" class="btn">添 加</button></p>
+    </div>
+    <div class="footer">
+        
+    </div>
+</div>
+
+<script>
+
+$('.fix_detail select').on('change', function () {
+    $('.fix_detail form:eq('+$(this).val()+')').removeClass('hide').siblings('form').addClass('hide');
+});
+
+</script>
+</body>
+</html>

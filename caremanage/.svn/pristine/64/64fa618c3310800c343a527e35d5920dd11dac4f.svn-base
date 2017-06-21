@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>老年人前端_公告政策_公告详情</title>
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/shequyonghu.css" />
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header">
+        <span class="logo">老年服务平台</span>
+        <p>欢迎您，社区工作者<a href="">修改密码</a><a href="">注销</a></p>
+        <ul><!-- 最后一个li 有class=act -->
+            <li><a href="">我的信息</a></li>
+            <li><a href="">我的服务</a></li>
+            <li><a href="">我的计划</a></li>
+            <li><a href="">实时消息</a></li>
+            <li><a href="">警报信息</a></li>
+			<li class="act"><a href="">公告政策</a></li>
+			<li><a href="">我的订单</a></li>
+            <li class="last"><a href="">知识库</a></li>
+        </ul>
+    </div>
+    <div class="body bodyline pad10">
+        <div class="usertitle strong clearfix"><div class="f_r fr_itbn"><button class="pad5 addContact">返回</button></div>公告详情</div>
+        <div class="rightbtn pad10"></div>
+        <div class="usedetail clearfix">
+			<div class="ggtext">
+				<p>XX小区关于办理业主卡的通知</p></br>
+				<p>尊敬的住户：</p></br>
+				<p>你们好！现本小区已进入装修阶段，进出苑区人员日益增多，管理处为加强小区人员进出管理，确保苑区的安全和谐，须对苑区住户办理业主卡，住户须凭业主卡进出苑区。请业主于近期内到管理处办理，谢谢合作！</p></br>      
+				<p>办理业主卡需带资料：</p></br>
+				<p>一、业主及家人：1寸照片2张，身份证复印件1张 </p></br>
+				<p>二、租住户： 租房合同复件；身份证复件1份；1寸照片2张</p></br>
+				<p>三、公司员工： 租房合同复件（限租住户）；公司营业执照复件1份；公司介绍信；身份证复件1张；1寸照片2张。</p></br>
+				<p>XX商务公寓管理处</p></br> 
+				<p>2014年5月4日</p></br>
+			</div>
+			<div class="ggtext_dl">
+				附件：<a href="#">XXXXXX.doc</a>
+			</div>
+        </div>
+    </div>
+    <div class="footer"></div>
+</div>
+</body>
+</html>

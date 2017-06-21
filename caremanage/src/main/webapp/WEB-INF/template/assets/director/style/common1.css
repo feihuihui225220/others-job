@@ -1,0 +1,55 @@
+/*.main1{width:96%;margin:0 2%;height:600px;background:#f4f9f8;}*/
+.main1{width:1300px;margin:0 2%;height:600px;background:#f4f9f8;}
+.personTitle{padding-bottom:15px;border-bottom:1px solid #d0d0d0;}
+.personTitle_left{width:60%;}
+.personTitle_left ul{margin-left:3%;}
+.personTitle_left ul li{height:28px;line-height:38px;}
+.marginright50{margin-right:50px;}
+.marginright60{margin-right:60px;}
+.marginleft90{margin-left:90px;}
+.marginleft50{margin-left:50px;}
+.personTitle_right{width:35%;}
+.personTitle_right ul{padding-right:1px;}
+.personTitle_right{padding-left: 0px;}
+.personTitle_right ul li{float:left;width:70px;margin-left:40px;}
+.personTitle_right ul li span{display:inline-block;width:91px;text-align:center;}
+/*左侧导航*/
+.personInfo{padding:10px;float: left;}
+.contentPer{width:180px;float: left;}
+.personInfo_right{width:80%;margin-left:20px;padding:20px 10px;}
+.personInfo_right input{margin-left:10px;}
+.personInfo_right label{color:#555555;}
+.zhi{margin-left:10px;}
+.personInfo .sidebar{width:160px;border:1px solid #ebf0ef;}
+.personInfo .sidebar li a{display:inline-block;width:160px;height:48px;line-height:48px;background-color:#fff;text-align:center;border-bottom:1px solid #dfdfdf;}
+.personInfo .sidebar li a.select{color:#22cde7;}
+/*申请会诊原因-遮罩*/
+.mask{position:absolute;top:0;left:0;z-index:10;width:100%;height:100%;background-color:#000;filter:alpha(opacity:30);opacity:0.3;display:none;}
+.huizhenReason{width:600px;height:320px;position:absolute;left:50%;top:50%;z-index:11;margin:-160px 0  0 -300px;background-color:#f4f9f8;border-radius:5px;display:none;}
+.title{height:60px;line-height: 60px;}
+.title .span_add{font-size:24px;margin-left:23px;color:#5f5f5f;}
+.title .close{display:inline-block;width:31px;height:60px;background:url(../image/closeBtn.png) no-repeat center center;margin-right:28px;}
+.reason_content{text-align:center;}
+.reason_content textarea{width:545px;height:162px;margin:0 auto;border:1px solid #c1c1c1;border-radius:5px;}
+.btn-fc{margin-top:30px;}
+.btn-fc .confirm{margin-left:164px;}
+.btn-fc .cancel{background-color:#9d9d9d;}
+/*申请转诊原因*/
+.zhuanzhenReason{width:600px;height:320px;position:absolute;left:50%;top:50%;z-index:11;margin:-160px 0  0 -300px;background-color:#f4f9f8;border-radius:5px;display:none;}
+
+/*申请治疗原因*/
+.zhiliaoReason{width:600px;height:320px;position:absolute;left:50%;top:50%;z-index:11;margin:-160px 0  0 -300px;background-color:#f4f9f8;border-radius:5px;display:none;}
+
+/*页码*/
+.page{margin:20px 0;}
+.page a{
+    display: inline-block;
+    border: 1px solid #e8e8e8;
+    text-decoration: none;
+    margin: 5px;
+    padding: 5px 10px;
+}
+
+.page a:link,.page a:visited{color:#838383;}
+.page a.active{color:#fff;background-color:#22cde7;}
+.page a:hover,.page a:active{color:#fff;background-color:#22cde7;}

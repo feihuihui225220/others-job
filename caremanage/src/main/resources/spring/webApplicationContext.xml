@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	                       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	                       http://www.springframework.org/schema/mvc    
+                           http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="webBindingInitializer"><!-- 日期绑定 -->
+			<bean class="com.anticw.aged.utils.BindingInitializer" />
+			<!-- <bean class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer"> 
+				<property name="conversionService"> <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean"></bean> 
+				</property> </bean> -->
+		</property>
+		<property name="messageConverters">
+			<list>
+				<bean
+					class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>text/plain;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+				<ref bean="mappingJacksonHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- 处理JSON数据转换的 -->
+	<bean id="mappingJacksonHttpMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<!-- 为了处理返回的JSON数据的编码，默认是ISO-88859-1的，这里把它设置为UTF-8,解决有乱码的情况 -->
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/plain;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter" />
+
+	<context:component-scan base-package="com.anticw.aged.controller" />
+
+	<bean id="exceptionResolver"
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="defaultErrorView" value="/exception" />
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.Exception">/exception/exception</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 拦截器 -->
+	<mvc:interceptors>
+		<bean class="com.anticw.aged.interceptor.CommonInterceptor" />
+	</mvc:interceptors>
+
+	<!-- 配置MultipartResolver 用于文件上传 使用spring的CommosMultipartResolver -->
+	<!-- <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
+		one of the properties available; the maximum file size in bytes <property 
+		name="defaultEncoding" value="UTF-8"/> <property name="maxUploadSize" value="100000000"/> 
+		<property name="uploadTempDir" value="fileUpload/temp"/> </bean> -->
+
+	<!-- 自定义 -->
+	<bean id="multipartResolver" class="com.anticw.aged.utils.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="maxUploadSize" value="2000000000" />
+		<property name="uploadTempDir" value="fileUpload/temp" />
+	</bean>
+	<bean id="velocityConfigurer"
+		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+		<property name="resourceLoaderPath" value="/WEB-INF/template/" />
+		<property name="velocityProperties">
+			<props>
+				<prop key="input.encoding">UTF-8</prop>
+				<prop key="output.encoding">UTF-8</prop>
+				<prop key="contentType">text/html;charset=UTF-8</prop>
+				<prop key="directive.foreach.counter.name">velocityCount</prop>
+				<prop key="directive.foreach.counter.initial.value">0</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+		<property name="cache" value="false" />
+		<property name="prefix" value="" />
+		<property name="suffix" value=".tpl" />
+		<property name="exposeSpringMacroHelpers" value="true" />
+		<property name="exposeRequestAttributes" value="true" />
+		<property name="contentType" value="text/html;charset=UTF-8" />
+		<property name="toolboxConfigLocation"
+			value="/WEB-INF/template/config/velocity-toolbox.xml" />
+		<property name="viewClass"
+			value="com.anticw.aged.utils.VelocityViewResolverExt" />
+	</bean>
+
+	<mvc:resources location="/html/" mapping="/html/**" />
+
+	<mvc:resources location="/WEB-INF/template/assets/"
+		mapping="/assets/**" />
+	<mvc:resources location="/WEB-INF/ueditor/" mapping="/ueditor/**" />
+	<!-- 目前相册要用到 -->
+
+	<mvc:resources location="/layer/" mapping="/layer/**" />
+	<!--<mvc:resources location="/assets/" mapping="/assets/**" /> -->
+
+	<mvc:resources location="/WEB-INF/attchment/" mapping="/attchment/**" />
+
+	<mvc:resources location="/WEB-INF/file/" mapping="/file/**" />
+	<mvc:resources location="/WEB-INF/tools/" mapping="/tools/**" />
+	<!--活动上传 -->
+	<mvc:resources location="/WEB-INF/ueditors/" mapping="/ueditors/**" />
+
+</beans>

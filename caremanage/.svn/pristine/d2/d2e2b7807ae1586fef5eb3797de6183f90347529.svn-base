@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/main/resources=UTF-8
+encoding//src/main/resources/config/datasource.properties=UTF-8
+encoding//src/main/webapp/WEB-INF/template/assets/css/bootstrap.min.css=UTF-8
+encoding//src/main/webapp/WEB-INF/template/assets/css/common.css=UTF-8
+encoding//src/main/webapp/WEB-INF/template/assets/css/fullcalendar.css=UTF-8
+encoding//src/main/webapp/WEB-INF/template/assets/css/fullcalendar.print.css=UTF-8
+encoding//src/main/webapp/WEB-INF/template/assets/css/login-old.css=UTF-8
+encoding//src/main/webapp/WEB-INF/template/assets/css/login.css=UTF-8
+encoding//src/main/webapp/WEB-INF/template/assets/css/reg.css=UTF-8
+encoding//src/main/webapp/WEB-INF/template/assets/css/shequyonghu.css=UTF-8
+encoding//src/main/webapp/WEB-INF/template/assets/css/yonghuguanli.css=UTF-8
+encoding//src/test/java=UTF-8
+encoding//src/test/resources=UTF-8
+encoding/<project>=UTF-8

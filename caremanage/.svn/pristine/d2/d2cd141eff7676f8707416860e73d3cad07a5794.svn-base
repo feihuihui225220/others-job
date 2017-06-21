@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+                        
+    <debug/>      
+    <http pattern="/assets/**" security="none"/>
+    <http pattern="/common/**" security="none"/>
+    <http pattern="/permission/toLogin" security="none"/>
+    <http pattern="/permission/toReg" security="none"/>
+    <http pattern="/permission/regist" security="none"/>
+    <http use-expressions="true" entry-point-ref="authenticationProcessingFilterEntryPoint">
+        <logout invalidate-session="true" logout-success-url="/permission/toLogin" logout-url="/permission/logout"/>
+        <!-- 实现免登陆验证 -->
+        <remember-me />
+        <session-management invalid-session-url="/timeout.jsp">
+            <concurrency-control max-sessions="10" error-if-maximum-exceeded="true" />
+        </session-management>
+        
+       	<custom-filter ref="loginFilter" position="FORM_LOGIN_FILTER"  />
+		<custom-filter ref="securityFilter" before="FILTER_SECURITY_INTERCEPTOR"/>
+    </http>
+    
+    <!-- 登录验证器 -->
+    <beans:bean id="loginFilter"
+		class="com.anticw.aged.service.security.AgedUsernamePasswordAuthenticationFilter">
+		<!-- 处理登录-security的登录controller可改名 -->
+		<beans:property name="filterProcessesUrl" value="/permission/login"/>
+		<beans:property name="authenticationSuccessHandler" ref="loginLogAuthenticationSuccessHandler"/>
+		<beans:property name="authenticationFailureHandler" ref="simpleUrlAuthenticationFailureHandler"/>
+		<beans:property name="authenticationManager" ref="agedAuthenticationManager"/>
+		
+		<beans:property name="userDao" ref="userDao"/>
+	</beans:bean>
+	<beans:bean id="loginLogAuthenticationSuccessHandler"
+		class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+		<beans:property name="defaultTargetUrl" value="/permission/jumpPage"/>
+	</beans:bean>
+	<beans:bean id="simpleUrlAuthenticationFailureHandler"
+		class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+		<beans:property name="defaultFailureUrl" value="/permission/toLogin"/>
+	</beans:bean>
+	
+    <!-- 认证过滤器 -->
+    <beans:bean id="securityFilter" class="com.anticw.aged.service.security.AgedSecurityFilter">
+    	<!-- 用户拥有的权限 -->
+    	<beans:property name="authenticationManager" ref="agedAuthenticationManager" />
+    	<!-- 用户是否拥有所请求资源的权限 -->
+    	<beans:property name="accessDecisionManager" ref="agedAccessDecisionManager" />
+    	<!-- 资源与权限对应关系 -->
+    	<beans:property name="securityMetadataSource" ref="agedSecurityMetadataSource" />
+    </beans:bean>
+    <!-- 实现了UserDetailsService的Bean -->
+    <authentication-manager alias="agedAuthenticationManager">
+        <authentication-provider user-service-ref="agedUserDetailServiceImpl">
+        	<!-- 登入 密码  采用MD5加盐'md5(password){username}'加密(不加密则注释) -->  
+            <password-encoder hash="md5" ref="passwordEncoder">
+            	<salt-source user-property="username"/>
+            </password-encoder>  
+        </authentication-provider>
+    </authentication-manager>
+    
+    <beans:bean id="agedAccessDecisionManager" class="com.anticw.aged.service.security.AgedAccessDecisionManager"/>
+	<beans:bean id="agedSecurityMetadataSource" class="com.anticw.aged.service.security.AgedSecurityMetadataSource">
+		<beans:constructor-arg name="resourceDao" ref="resourceDao"/>
+	</beans:bean>
+	<beans:bean id="agedUserDetailServiceImpl" class="com.anticw.aged.service.security.AgedUserDetailServiceImpl">
+		<beans:property name="userDao" ref="userDao"/>
+	</beans:bean>
+	
+	<!-- 未登录的切入点 -->
+	<beans:bean id="authenticationProcessingFilterEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+		<beans:property name="loginFormUrl" value="/permission/toLogin"/>
+	</beans:bean>
+	<!-- 密码MD5加密 -->
+	<beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"/>  
+</beans:beans>

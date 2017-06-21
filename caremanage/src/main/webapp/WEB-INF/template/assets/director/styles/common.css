@@ -1,0 +1,53 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,select,textarea,p,blockquote,th,td,figure{margin:0;padding:0;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th{font-weight:normal;text-align:left;}
+fieldset,img{border:0;}
+ul,li{list-style:none;}
+/* h1,h2,h3,h4,h5,h6{font-size:100%;} */
+blockquote:before,blockquote:after,q:before,q:after{content:"";}
+del{text-decoration:line-through}
+table{border-collapse:collapse;border-spacing:0}
+
+html{-webkit-text-size-adjust:none;-ms-text-size-adjust:none;}
+input,button,textarea,select,option,optiongroup{font-family:inherit;font-size:inherit;}
+img {border:none;vertical-align:top;}
+address,caption,cite,code,dfn,em,i,var,optgroup{font-style:normal;font-weight:normal;}
+:focus{outline:0}
+:active {outline:0;}
+:visited {outline:0;}
+input,textarea{ resize: none; outline:0;} 
+.clearfix:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}
+.clearfix{*zoom:1}
+.clear{clear:both}
+:link,:visited{text-decoration:none}
+input,textarea{ resize: none; outline:0;} 
+button{cursor:pointer;overflow:visible;}
+input[type=reset],
+input[type=button],
+input[type=submit]{cursor:pointer;overflow:visible;}
+input[type=checkbox],
+input[type=radio]{box-sizing:border-box;}
+
+body{font:12px/1.6 Microsoft Yahei,SimSun;word-wrap:break-word;color:#333; background:#f9f9f9}
+a { text-decoration: none;color:#333; }
+a:hover { text-decoration: underline; }
+.fl{ float: left;}
+.fr{ float: right;}
+
+
+
+/* 头部 */
+.header{width:100%;background:url(../images/bg_header.jpg) repeat-x 0 0; height:88px;}
+.header .logo{width:466px;height:88px;}
+.header .login_status{width:188px;height:55px;padding:33px 0 0 22px; background:url(../images/header_right.jpg) no-repeat 0 0;color:#fff; font-size:14px}
+.header .login_status a{color:#fff}
+.header .login_status span{padding:0 20px}
+.header .login_status a.userName{ background:url(../images/icon_usrName_top.jpg) no-repeat 0 3px; padding:0 0 0 20px}
+
+
+

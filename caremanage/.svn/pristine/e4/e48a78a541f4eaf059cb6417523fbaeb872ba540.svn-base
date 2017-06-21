@@ -1,0 +1,116 @@
+.w98{width:98%;}
+.f_l {width:27%;}
+.fix_body .f_l {width:27%;background:#f2f2f2;height:100%;border-right:1px solid #999;overflow-y:scroll;overflow-x:hidden;}
+.f_r {width:71%;}
+.fix_body .f_r {width:71%;overflow-y:scroll;overflow-x:hidden;}
+.fix_body #tree_show table {margin-top:20px;width:100%;}
+.btn_box {margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #8f0000;overflow:hidden;zoom:1;}
+.fix_body {overflow:hidden;}
+
+
+#tree {padding:20px 50px;}
+#tree ul {overflow:hidden;zoom:1;}
+#tree li ul {display:none;margin-left:1em;}
+#tree li {padding-left:2em;}
+#tree li.act {font-weight:bold;}
+#tree s {float:left;margin-right:3px;width:13px;height:16px;background:url(img/tree_close.png) no-repeat 2px 50%;cursor:pointer;margin-top:2px;}
+
+#tree s.on {background-image:url(img/tree_open.png);}
+#tree s.none{background-image:none;cursor:inherit;}
+#tree span {cursor:default;}
+#tree span.act {font-weight:bold;}
+
+#tree_show {padding:20px;position:relative;}
+#tree_show .btn {float:right;padding:0 18px;}
+
+.table_col2 .col1 {width:40%;}
+.table_col2 .col2 {width:60%;}
+
+.table_col3 .col1 {width:20%;}
+.table_col3 .col2 {width:60%;}
+.table_col3 .col3 {width:20%;}
+
+.table_col4 .col1 {width:15%;}
+.table_col4 .col2 {width:35%;}
+.table_col4 .col3 {width:10%;}
+.table_col4 .col4 {width:40%;}
+
+.table_col5 .col1 {width:25%;}
+.table_col5 .col2 {width:8%;}
+.table_col5 .col3 {width:15%;}
+.table_col5 .col4 {width:35%;}
+.table_col5 .col5 {width:17%;}
+
+.table_col6 .col1 {width:15%;}
+.table_col6 .col2 {width:30%;}
+.table_col6 .col3 {width:15%;}
+.table_col6 .col4 {width:15%;}
+.table_col6 .col5 {width:8%;}
+.table_col6 .col6 {width:17%;}
+
+#tb_pop {position:absolute;width:240px;padding:20px;border:1px solid #ccc;background:#fefefe;left:260px;top:51px}
+#tb_pop input {width:180px;padding:5px;box-shadow:inset 2px 2px 5px #eee;border:1px solid #D4D4D4;margin-top:10px;}
+#tb_pop p {text-align:center;padding-top:15px;}
+#tb_pop b {font-weight:normal;}
+
+
+
+/* 分类管理 */
+.box_padding {padding:20px;border:1px solid #ddd;}
+.admin_cate_opt {padding:20px 15px;overflow:hidden;zoom:1;height:31px;line-height:31px;font-weight:bold;}
+.admin_cate_opt .btn {float:right;color:#fff;margin-left:20px;font-weight:normal;}
+.l4 {float:left;width:39%;}
+.r6 {float:right;width:60%;}
+
+.actbox2 {overflow:hidden;zoom:1;margin-top:20px;}
+.actbox2 .l4 {border-right:1px solid #ddd;}
+
+
+/* careManag管理 */
+.inpubox2 li label {width:110px;}
+
+
+/* 试题-分数 */
+.limitbox .table_col4 .col1 {width:8%;}
+.limitbox .table_col4 .col2 {width:35%;}
+.limitbox .table_col4 .col3 {width:35%;}
+.limitbox .table_col4 .col4 {width:17%;}
+.limitbox .admin_cate_opt {padding-top:0;}
+
+/* 结论分数 */
+.fix_score .col1 {width:5%;}
+.fix_score .col2 {width:25%;}
+.fix_score .col3 {width:50%;}
+.fix_score .col4 {width:20%;}
+
+
+/*专业服务商-客户管理*/
+.pj_result{border-top:2px solid #333;}
+.pj_result_list{border-bottom:1px dashed #666; padding:10px;}
+.pj_result_list_p1{display:inline-block; height:30px;}
+.pj_result_list_p2{height:30px; display:block;}
+.pj_result_list_span{margin-left:20px;}
+
+
+
+/*Care Manager服务商管理*/
+.addul{width:300px !important;}
+.addul1{width:400px !important;}
+.addul1_label{display:inline-block !important; text-align: right; width: 100px;}
+.adddiv{width:100% !important;}
+.addimg{width:120px !important;}
+.actbox1{overflow: hidden;zoom: 1;margin-top: 20px;}
+.addul2{width:90% !important;}
+.addul1_label p{display:inline-block;}
+.umleft_l{width:100px;float:left; text-align:right;}
+.umleft_r{float:left; width:80%;}
+.umleft_r p{font-weight: 900;}
+
+
+/*老年人前端公告政策*/
+.nonelinePJ{border-top:none !important;}
+.span1em{padding-left:1em;}
+
+
+
+

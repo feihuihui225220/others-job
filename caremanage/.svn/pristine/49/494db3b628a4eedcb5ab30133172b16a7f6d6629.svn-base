@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/reg.css" />
+<link rel="stylesheet" href="css/shequyonghu.css" />
+<link rel="stylesheet" href="css/yonghuguanli.css" />
+<script src="js/jquery-1.8.0.min.js"></script>
+<style>
+.inpubox li {width:290px;}
+.mask_contact {padding-top:20px;}
+.mask_contact table {width:72%;margin-left:112px;}
+.mask_contact table a {color:#333;}
+.mask_contact .inpubox li.w520 {width:640px;}
+.col2 {width:6em;}
+.fix_car {padding-left:112px;margin-bottom:15px;}
+.table100 select, .table100 input {margin:0;}
+.sum {margin-bottom:5px;}
+.sum b {color:red;margin-right:5px;}
+.tip {color:#666;}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header">
+        <span class="logo">老年服务平台</span>
+        <p>欢迎您，社区工作者<a href="">修改密码</a><a href="">注销</a></p>
+        <ul><!-- 最后一个li 有class=act -->
+            <li class="act"><a href="">用户管理</a></li>
+            <li><a href="">CareManager管理</a></li>
+            <li><a href="">元服务管理</a></li>
+            <li><a href="">专业服务管理</a></li>
+            <li><a href="">关爱服务管理</a></li>
+            <li><a href="">评估量表管理</a></li>
+            <li><a href="">政策管理</a></li>
+            <li><a href="">设备管理</a></li>
+            <li><a href="">知识库管理</a></li>
+            <li class="last"><a href="">分类管理</a></li>
+        </ul>
+    </div>
+    <form method="post" action="" class="reg_area fix_pop" style="width:960px">
+        <h2>开通服务</h2>
+        <div class="mask_contact pad10">
+            <ul class="inpubox clearfix">
+                <li><label>服务名称：</label>心率检测</li>
+                <li><label>服务费用：</label><span class="per">50元/月</span></li>
+                <li><label>申请人姓名：</label>张三</li>
+                <li><label>身份证号：</label>123123123123123123</li>
+                <li><label>服务商：</label><select>
+                    <option>1</option>
+                    <option>1</option>
+                    <option>1</option>
+                    <option>1</option>
+                </select></li>
+                <li class="w520"><label>开通时间：</label><input class="timedate" />&emsp;&emsp;到期时间：<input class="timedate" /></li>
+                <li class="w520"><label>选择设备：</label>
+                    <table class="table100 usertable cen">
+                        <tr>
+                            <th>设备类型</th>
+                            <th>设备名称</th>
+                            <th>设备ID</th>
+                        </tr>
+                        <tr>
+                            <td>血压计</td>
+                            <td><select>
+                                <option>请选择</option>
+                                <option>欧姆龙 300元</option>
+                                <option>欧姆龙 300元</option>
+                                <option>欧姆龙 300元</option>
+                            </select></td>
+                            <td><input placeholder="请输入设备ID" /></td>
+                        </tr>
+                        <tr>
+                            <td>血压计</td>
+                            <td><select>
+                                <option>请选择</option>
+                                <option>欧姆龙 300元</option>
+                                <option>欧姆龙 300元</option>
+                                <option>欧姆龙 300元</option>
+                            </select></td>
+                            <td><input placeholder="请输入设备ID" /></td>
+                        </tr>
+                        <tr>
+                            <td>血压计</td>
+                            <td><select>
+                                <option>请选择</option>
+                                <option value="11">欧姆龙 300元</option>
+                                <option value="22">欧姆龙 300元</option>
+                                <option>欧姆龙 300元</option>
+                            </select></td>
+                            <td><input placeholder="请输入设备ID" /></td>
+                        </tr>
+                    </table>
+                </li>
+            </ul>
+            <p class="sum">合计费用：<b>0.00</b>元</p>
+            <span class="tip">计算方式：（服务费用+设备费用）X订购月数</span>
+        </div>
+        <p class="opt"><a href="" class="btn">取 消</a><button type="submit" class="btn">开 通</button></p>
+    </form>
+    <div class="footer">
+        
+    </div>
+</div>
+<script src="js/lhgcalendar.min.js"></script>
+<script>
+$('.timedate').calendar({ format:'yyyy-MM-dd', zIndex:222222222});
+function maxDay(month){
+    var d= new Date();
+    return new Date(d.getFullYear(), month,0).getDate();
+}
+
+setInterval(function () {
+    if ($('.timedate:eq(0)').val() && $('.timedate:eq(1)').val()) {
+        var arr1 = $('.timedate:eq(0)').val().split('-');
+        var arr2 = $('.timedate:eq(1)').val().split('-');
+        var long = new Date($('.timedate:eq(1)').val()) - new Date($('.timedate:eq(0)').val());
+console.log(Math.ceil((long/3600/24/1000)/30))
+
+        if (Math.ceil((long/3600/24/1000)/30) >= 1) {
+            var m = Math.ceil((long/3600/24/1000)/30);
+            var sumopt = 0;
+
+            $('table select').each(function () {
+                console.log($(this).attr('value'))
+                if (!isNaN($(this).attr('value'))) {
+                    sumopt+=parseInt($(this).attr('value'));
+                }
+            });
+            $('.sum b').html((m*(sumopt+parseInt($('.per').html()))).toFixed(2));
+        }
+
+    }
+}, 100);
+
+</script>
+</body>
+</html>

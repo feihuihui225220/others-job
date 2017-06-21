@@ -1,0 +1,30 @@
+
+
+.marginright10{margin-right:10px;}
+.personInfo_righttop{border-bottom:1px solid #d0d0d0;line-height:25px;height:25px;padding-bottom:20px;position:relative;}
+.personInfo_righttop label{display:inline-block;color:#22cde7;font-size:20px;line-height:25px;height:25px;}
+.marginleft15{margin-left:15px;}
+.marginleft75{margin-left:75px;}
+.personInfo_righttop .save{position:absolute;right:0;top:-15px;display:inline-block;width:51px;height:52px;background:url(../image/edit.png) no-repeat center center;}
+/**/
+.personInfo_rightbottom{padding-bottom:50px;}
+.personInfo_rightbottom .detail{padding:1%;border-bottom:1px solid #d1d1d1;}
+.personInfo_rightbottom label{margin-right:10px;}
+.personInfo_rightbottom .detail li{line-height:30px;margin-bottom:10px;}
+.personInfo_rightbottom .detail li .p1{width:14%;}
+.personInfo_rightbottom .detail li .p2{width:14%;}
+.personInfo_rightbottom .detail li .p3{width:35%;}
+.personInfo_rightbottom .detail li .p4{width:35%;}
+
+.emergency{padding:15px 0;border-bottom:1px solid #d0d0d0;}
+.emergency .contact{font-size:20px;margin-right:25px;display:block;}
+.emergency  p{line-height:30px;height:30px;}
+.emergency .tele{margin-left:72px;}
+
+.medical p{line-height:35px;height:35px;}
+.pLeft{width:30%;}
+.pRight{width:70%;}
+.div35{line-height:35px;height:35px;}
+.pLeft1{width:15%;}
+.pRight1{width:85%;}
+.colorRed{color:#ff5f3d;}

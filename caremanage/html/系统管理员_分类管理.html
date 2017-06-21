@@ -1,0 +1,270 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="css/shequyonghu.css" />
+<link rel="stylesheet" href="css/yonghuguanli.css" />
+<script src="js/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header">
+        <span class="logo">老年服务平台</span>
+        <p>欢迎您，社区工作者<a href="">修改密码</a><a href="">注销</a></p>
+        <ul><!-- 最后一个li 有class=act -->
+            <li class="act"><a href="">用户管理</a></li>
+            <li><a href="">CareManager管理</a></li>
+            <li><a href="">元服务管理</a></li>
+            <li><a href="">专业服务管理</a></li>
+            <li><a href="">关爱服务管理</a></li>
+            <li><a href="">评估量表管理</a></li>
+            <li><a href="">政策管理</a></li>
+            <li><a href="">设备管理</a></li>
+            <li><a href="">知识库管理</a></li>
+            <li class="last"><a href="">分类管理</a></li>
+        </ul>
+    </div>
+    <div class="body">
+        <div class="useractbox bodyline pad10">
+            <ul class="clourstitle strong mgb10">
+                <li index="1" class="rel on">办事信息</li>
+                <li index="2" class="rel">基础信息</li>
+            </ul>
+            <div class="actboxlist">
+                <div class="actbox1">
+                    <div class="admin_cate_opt">
+                        分类项目选择：
+                        <select>
+                            <option>用户分类管理</option>
+                            <option>政策</option>
+                            <option>公告</option>
+                            <option>证件</option>
+                            <option>专业服务</option>
+                            <option>关爱服务</option>
+                            <option>知识库</option>
+                            <option>宗教信仰</option>
+                            <option>户口类型</option>
+                            <option>婚姻状况</option>
+                            <option>政治面貌</option>
+                            <option>文化程度</option>
+                            <option>民族</option>
+                            <option>居住状况</option>
+                            <option>从业状况</option>
+                            <option>经济来源</option>
+                            <option>失能</option>
+                            <option>空巢</option>
+                            <option>独居</option>
+                            <option>评估量表类型</option>
+                        </select>
+                        <button class="btn">添 加</button>
+                    </div>
+                    <table class="tb table_col3">
+                        <col class="col1"/><col class="col2"/><col class="col3"/>
+                        <tr><th>分类名称</th><th>分类描述</th><th>操作</th></tr>
+                        <tr>
+                            <td>1111</td>
+                            <td>123123123</td>
+                            <td><span class="tb_edit">编 辑</span><span class="tb_remove">删 除</span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="actbox2 hide">
+                    <div class="l4">
+                        <div class="admin_cate_opt">
+                            状态分类
+                            <button class="btn">添 加</button>
+                        </div>
+                        <table class="tb table_col2">
+                            <col class="col1"/><col class="col2"/>
+                            <tr>
+                                <th>状态分类</th>
+                                <th>操作</th>
+                            </tr>
+                            <tr>
+                                <td>饮食</td>
+                                <td><span class="tb_edit">编 辑</span><span class="tb_remove">删 除</span></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="r6">
+                        <div class="admin_cate_opt">
+                            描述分类
+                            <button class="btn">添 加</button>
+                        </div>
+                        <table class="tb table_col2">
+                            <col class="col1"/><col class="col2"/>
+                            <tr>
+                                <th>描述分类</th>
+                                <th>操作</th>
+                            </tr>
+                            <tr>
+                                <td>饮食正常</td>
+                                <td><span class="tb_edit">编 辑</span><span class="tb_remove">删 除</span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="footer"></div>
+</div>
+<div class="limitbox pad10 hide">
+    <ul class="inpubox clearfix">
+        <li><label>分类名称：</label><input class="text150" type="text" /></li>
+        <li><label>描述：</label><textarea name="" id="" cols="30" rows="6"></textarea></li>
+    </ul>
+</div>
+<div class="limitbox2 pad10 hide">
+    <ul class="inpubox clearfix">
+        <li><label>分类民称：</label><input class="text150" type="text" /></li>
+    </ul>
+</div>
+<script type="text/javascript" src="js/layer.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $(".clourstitle li").click(function(){
+        var index = $(this).attr('index');
+        $(this).addClass('on').siblings().removeClass('on');
+        $(".actboxlist .actbox"+index).show().siblings().hide();
+    });
+
+    $('.actbox1 .btn').click(function () {
+        $('.limitbox input').val('');
+        $('.limitbox textarea').val('');
+        $.layer({
+            type : 1,
+            title : '添加分类',
+            offset:['150px' , ''],
+            border : false,
+            shadeClose:true,
+            fadeIn: 300,
+            btns: 2,
+            btn: ['保存', '取消'],
+            yes:function(index){
+                console.log("保存",index);
+                $('.table_col3').append('<tr><td>'+$('.limitbox input').val()+'</td><td>'+$('.limitbox textarea').val()+'</td><td><span class="tb_edit">编 辑</span><span class="tb_remove">删 除</span></td></tr>')
+                layer.close(index);
+            },
+            area : ['450px','270px'],
+            page : {dom : '.limitbox'}
+        });
+    });
+
+    $('.actbox1 .tb_edit').live('click', function () {
+        var _this = $(this)
+        $('.limitbox input').val($(this).parent().prev().prev().html());
+        $('.limitbox textarea').val($(this).parent().prev().html());
+        $.layer({
+            type : 1,
+            title : '编辑分类',
+            offset:['150px' , ''],
+            border : false,
+            shadeClose:true,
+            fadeIn: 300,
+            btns: 2,
+            btn: ['保存', '取消'],
+            yes:function(index){
+                console.log("保存",index);
+                $(_this).parent().prev().prev().html($('.limitbox input').val());
+                $(_this).parent().prev().html($('.limitbox textarea').val());
+                layer.close(index);
+            },
+            area : ['450px','270px'],
+            page : {dom : '.limitbox'}
+        });
+    });
+
+    $('.actbox2 .btn:eq(0)').click(function () {
+        $('.limitbox2 input').val('');
+        $.layer({
+            type : 1,
+            title : '添加分类',
+            offset:['150px' , ''],
+            border : false,
+            shadeClose:true,
+            fadeIn: 300,
+            btns: 2,
+            btn: ['保存', '取消'],
+            yes:function(index){
+                console.log("保存",index);
+                $('.table_col2:eq(0)').append('<tr><td>'+$('.limitbox2 input').val()+'</td><td><span class="tb_edit">编 辑</span><span class="tb_remove">删 除</span></td></tr>')
+                layer.close(index);
+            },
+            area : ['300px','145px'],
+            page : {dom : '.limitbox2'}
+        });
+    });
+
+    $('.actbox2 .btn:eq(1)').click(function () {
+        $('.limitbox2 input').val('');
+        $.layer({
+            type : 1,
+            title : '添加分类',
+            offset:['150px' , ''],
+            border : false,
+            shadeClose:true,
+            fadeIn: 300,
+            btns: 2,
+            btn: ['保存', '取消'],
+            yes:function(index){
+                console.log("保存",index);
+                $('.table_col2:eq(1)').append('<tr><td>'+$('.limitbox2 input').val()+'</td><td><span class="tb_edit">编 辑</span><span class="tb_remove">删 除</span></td></tr>')
+                layer.close(index);
+            },
+            area : ['300px','145px'],
+            page : {dom : '.limitbox2'}
+        });
+    });
+
+
+    $('.actbox2 .tb_edit').live('click', function () {
+        var _this = $(this)
+        $('.limitbox2 input').val($(this).parent().prev().html());
+        $.layer({
+            type : 1,
+            title : '编辑分类',
+            offset:['150px' , ''],
+            border : false,
+            shadeClose:true,
+            fadeIn: 300,
+            btns: 2,
+            btn: ['保存', '取消'],
+            yes:function(index){
+                console.log("保存",index);
+                $(_this).parent().prev().html($('.limitbox2 input').val());
+                layer.close(index);
+            },
+            area : ['300px','145px'],
+            page : {dom : '.limitbox2'}
+        });
+    });
+
+    $('.tb_remove').live('click', function () {
+        var _this = $(this)
+        $.layer({
+            shade: [0],
+            area: ['auto','auto'],
+            dialog: {
+                msg: '确定要删除吗？',
+                btns: 2,                    
+                type: 4,
+                btn: ['删除','取消'],
+                yes: function(){
+                    $(_this).parent().parent().remove();
+                    layer.msg('删除', 1, 1);
+                }, no: function(){
+                    //layer.msg('取消', 1, 13);
+                }
+            }
+        });
+    });
+
+});
+</script>
+</body>
+</html>

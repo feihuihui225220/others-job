@@ -1,0 +1,25 @@
+@charset "utf-8";
+/* CSS Document */
+.table-wrapper{font:14px/1.8 Tahoma,Helvetica,Arial,'宋体',sans-serif; color:#333}
+.table-wrapper a{color:#333;text-decoration:none; }
+.table-wrapper a:hover{text-decoration:underline;}
+.table-wrapper table{border-collapse:collapse;border-spacing:0;}
+.table-wrapper{ width:1000px; margin:0 auto 0 0;}
+.table-wrapper .detail_chart_list{ border:1px solid #ddd; margin:1% auto;}
+.table-wrapper .detail_chart_list th{white-space:nowrap}
+.table-wrapper .detail_chart_list th,.table-wrapper .detail_chart_list td{ line-height:40px; text-align:center; border:1px solid #ddd;padding:0 5px; word-break:break-all;word-wrap:break-word;}
+.table-wrapper .detail_chart_list td{ background:#fff}
+.table-wrapper .detail_chart_list th{background:#f1f1f1; font-weight:bold;}
+.table-wrapper .detail_chart_list .chart_list_even{ background:#f9f9f9;}
+.table-wrapper .detail_chart_list .chart_list_odd{ background:#fff;}
+.table-wrapper .detail_chart_list tr td.current{ background:#f4f7f9;}
+.table-wrapper .page{ text-align:right;padding:10px; background:#f2faff; border-bottom:1px #becee5 solid}
+.table-wrapper .page a{margin:0 5px}
+.wrapper{width:900px;}
+.lable_1{margin-left: 11%}
+.table_w{width: 100%;margin-left:1%}
+.label_c{margin: 10px 0 10px 1%}
+.text_ta{margin-left: 11%;margin-top: 2%;}
+.gm_right{float: right;margin-right: 10%;}
+#detail_chart_list tr td,thead tr th { text-align: center; height: 30px;}
+.pad123{width: 78%;float: right;}
